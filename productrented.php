@@ -495,7 +495,7 @@
                                             <th>Tên xe</th>
                                             <th>Tình trạng xe</th>
                                             <th>Số tiền</th>
-                                            <th>Mô tả</th>
+                                          
                                             <th>Thao tác</th>
                                         </tr>
                                     </thead>
@@ -505,7 +505,7 @@
                                             <th>Tên xe</th>
                                             <th>Tình trạng xe</th>
                                             <th>Số tiền</th>
-                                            <th>Mô tả</th>
+                                            
                                             <th>Thao tác</th>
                                         </tr>
                                     </tfoot>
