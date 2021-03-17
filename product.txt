@@ -1,0 +1,10 @@
+CREATE TABLE `products` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `category` varchar(100) DEFAULT NULL,
+  `status` varchar(100) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `description` varchar(150) DEFAULT NULL,
+  `image` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
