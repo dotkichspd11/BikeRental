@@ -54,6 +54,7 @@ if(isset($_GET["idhd"]) && !empty(trim($_GET["idhd"]))){
     header("location: 404.php");
     exit();
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

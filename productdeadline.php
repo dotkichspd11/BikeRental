@@ -26,7 +26,9 @@
 </head>
 
 <body id="page-top">
-
+<?php require_once 'functions.php'; ?>
+    <?php require_once 'addproduct.php'; ?>
+    <?php require_once 'config.php';?>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -99,10 +101,10 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="product.html">Tất cả xe</a>
-                        <a class="collapse-item" href="productready.html">Xe sẵn sàng</a>
-                        <a class="collapse-item" href="productrented.html">Xe đang thuê</a>
-                        <a class="collapse-item active" href="productdeadline.html">Xe tới hạn trả</a>
+                        <a class="collapse-item" href="product.php">Tất cả xe</a>
+                        <a class="collapse-item" href="productready.php">Xe sẵn sàng</a>
+                        <a class="collapse-item" href="productrented.php">Xe đang thuê</a>
+                        <a class="collapse-item active" href="productdeadline.php">Xe tới hạn trả</a>
                     </div>
                 </div>
             </li>
@@ -394,51 +396,95 @@
                                     <option value="Xe côn">Xe côn</option>
                                 </select>
                             </div>
+                            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModalLong">Thêm xe </button>
                             
-                                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModalLong">Thêm xe </button>
-                            
-                                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLongTitle">Thêm xe</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
+                            <form action="addproduct.php" method="post" enctype="multipart/form-data" class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLongTitle">Thêm xe</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="card-body_item">
+                                            <label for="">Chọn hình ảnh xe<sup>*</sup></label>
+                                            <input class="card-body_input" type="file" id="HinhAnh" name="HinhAnh" multiple require>
                                         </div>
-                                        <div class="modal-body">
-                                            <div class="card-body_item">
-                                                <label for="">Chọn hình ảnh xe<sup>*</sup></label>
-                                                <input class="card-body_input" type="file" required>
-                                            </div>
-                                            <div class="card-body_item">
-                                                <label for="">Tên xe<sup>*</sup></label>
-                                                <input class="card-body_input" type="text" required>
-                                            </div>
-                                            <div class="card-body_item">
-                                                <label for="">Tình trạng xe<sup>*</sup></label>
-                                                <select name="select_item-status" id="select_item-status">
-                                                    <option value="Đang thuê">Đang thuê</option>
-                                                    <option value="Sẵn sàng">Sẵn sàng</option>
-                                                </select>
-                                            </div>
-                                            <div class="card-body_item">
-                                                <label for="">Số tiền<sup>*</sup></label>
-                                                <input class="card-body_input" type="text" required>
-                                            </div>
-                                            <div class="card-body_item">
-                                                <label for="">Mô tả<sup>*</sup></label>
-                                                <input class="card-body_input" type="text" required>
-                                            </div>
+                                        <div class="card-body_item ">
+                                            <label for="">Tên xe<sup>*</sup></label>
+                                            <input class="card-body_input" type="text" id="TenXe" name="TenXe" required>
+                                            
                                         </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                          <button type="button" class="btn btn-primary">Thêm mới</button>
+                                        <div class="card-body_item ">
+                                            <label for="">Biển số xe<sup>*</sup></label>
+                                            <input class="card-body_input" type="text" id="BienSoXe" name="BienSoXe" required>
+                                            
                                         </div>
-                                      </div>
+                                        <div class="card-body_item ">
+                                            <label for="">Khung xe<sup>*</sup></label>
+                                            <input class="card-body_input" type="text" id="KhungXe" name="KhungXe" required>
+                                            
+                                        </div>
+                                        <div class="card-body_item ">
+                                            <label for="">Màu sắc<sup>*</sup></label>
+                                            <input class="card-body_input" type="text" id="MauSac" name="MauSac" required>
+                                            
+                                        </div>
+                                        <div class="card-body_item ">
+                                            <label for="">Năm đăng ký<sup>*</sup></label>
+                                            <input class="card-body_input" type="text" id="NamDangKy" name="NamDangKy" required>
+                                            
+                                        </div>
+                                        <?php 
+                                        
+                                        $sql = "select * from loaixe"; 
+                                        $result=$link->query($sql);
+                                        ?>
+                                        <div class="card-body_item ">
+                                            <label for="">Loại xe<sup>*</sup></label>
+                                            <select name="TenLoaiXe" id="TenLoaiXe">
+                                            <?php 
+                                                 foreach($result as $tl){
+                                                echo " <option value=".$tl['MaLoaiXe'].">".$tl['TenLoaiXe']."</option>";
+                                            }
+                                            ?>
+                                                
+                                            </select>
+                                            
+                                        </div>
+                                        <div class="card-body_item ">
+                                            <label for="">Tình trạng xe<sup>*</sup></label>
+                                           <select id="TrangThai" name="TrangThai">
+                                                <option value="Sẵn Sàng">Sẵn Sàng</option>
+                                                <option value="Đang Được Thuê">Đang Được Thuê</option>
+                                                <option value="Tới Hạn Trả">Tới Hạn Trả</option>
+
+                                           </select>
+                                            
+                                        </div>
+                                        <div class="card-body_item ">
+                                            <label for="">Giá Thành<sup>*</sup></label>
+                                            <input class="card-body_input" type="number" id="GiaThanh" name="GiaThanh" min="0"  required>
+                                            
+                                        </div>
+                                        
+                                        <div class="card-body_item">
+                                        
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                      <input type="submit" id="submit" name="submit" class="btn btn-primary" value="Thêm mới">
                                     </div>
                                   </div>
+                                </div>
+                              </form>
+                               
                         </div>
+                        <?php $result =$link->query("SELECT * FROM chitietxe where TrangThai='Tới Hạn Trả'")?>
+
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -449,7 +495,7 @@
                                             <th>Tên xe</th>
                                             <th>Tình trạng xe</th>
                                             <th>Số tiền</th>
-                                            <th>Mô tả</th>
+                                            
                                             <th>Thao tác</th>
                                         </tr>
                                     </thead>
@@ -459,115 +505,32 @@
                                             <th>Tên xe</th>
                                             <th>Tình trạng xe</th>
                                             <th>Số tiền</th>
-                                            <th>Mô tả</th>
+                                          
                                             <th>Thao tác</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>SH 2020</td>
-                                            <td class="card-status-deadline">Tới hạn trả</td>
-                                            <td>200.000đ</td>
-                                            <td>Xe hơi bị ngon</td>
-                                            <td class="card-table-item">
-                                                <a href="/detailproductdeadline.html" class="card-table-link">
-                                                    <i class="fas fa-info-circle card-table-icon"></i>
-                                                </a>
-                                                <a href="" class="card-table-link">
-                                                    <i class="fas fa-edit card-table-icon"></i>
-                                                </a>
-                                                <a href="" class="card-table-link">
-                                                    <i class="fas fa-trash-alt card-table-icon"></i>
-                                                </a>
-                                                <a href="" class="card-table-link">
-                                                    <i class="far fa-check-circle done card-table-icon"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>002</td>
-                                            <td>Air Blade 2020</td>
-                                            <td class="card-status-deadline">Tới hạn trả</td>
-                                            <td>100.000đ</td>
-                                            <td>Xe hơi bị ok</td>
-                                            <td class="card-table-item">
-                                                <a href="/detailproductdeadline.html" class="card-table-link">
-                                                    <i class="fas fa-info-circle card-table-icon"></i>
-                                                </a>
-                                                <a href="" class="card-table-link">
-                                                    <i class="fas fa-edit card-table-icon"></i>
-                                                </a>
-                                                <a href="" class="card-table-link">
-                                                    <i class="fas fa-trash-alt card-table-icon"></i>
-                                                </a>
-                                                <a href="" class="card-table-link">
-                                                    <i class="far fa-check-circle done card-table-icon"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>003</td>
-                                            <td>SH Mode 2019</td>
-                                            <td class="card-status-deadline">Tới hạn trả</td>
-                                            <td>120.000đ</td>
-                                            <td>Xe hơi bị ngon</td>
-                                            <td class="card-table-item">
-                                                <a href="/detailproductdeadline.html" class="card-table-link">
-                                                    <i class="fas fa-info-circle card-table-icon"></i>
-                                                </a>
-                                                <a href="" class="card-table-link">
-                                                    <i class="fas fa-edit card-table-icon"></i>
-                                                </a>
-                                                <a href="" class="card-table-link">
-                                                    <i class="fas fa-trash-alt card-table-icon"></i>
-                                                </a>
-                                                <a href="" class="card-table-link">
-                                                    <i class="far fa-check-circle done card-table-icon"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>004</td>
-                                            <td>Winner 2020</td>
-                                            <td class="card-status-deadline">Tới hạn trả</td>
-                                            <td>150.000đ</td>
-                                            <td>Xe hơi bị dc</td>
-                                            <td class="card-table-item">
-                                                <a href="/detailproductdeadline.html" class="card-table-link">
-                                                    <i class="fas fa-info-circle card-table-icon"></i>
-                                                </a>
-                                                <a href="" class="card-table-link">
-                                                    <i class="fas fa-edit card-table-icon"></i>
-                                                </a>
-                                                <a href="" class="card-table-link">
-                                                    <i class="fas fa-trash-alt card-table-icon"></i>
-                                                </a>
-                                                <a href="" class="card-table-link">
-                                                    <i class="far fa-check-circle done card-table-icon"></i>
-                                                </a>
-                                        </tr>
-                                        <tr>
-                                            <td>005</td>
-                                            <td>Exciter 2020</td>
-                                            <td class="card-status-deadline">Tới hạn trả</td>
-                                            <td>120.000đ</td>
-                                            <td>Xe hơi bị dc</td>
-                                            <td class="card-table-item">
-                                                <a href="/detailproductdeadline.html" class="card-table-link">
-                                                    <i class="fas fa-info-circle card-table-icon"></i>
-                                                </a>
-                                                <a href="" class="card-table-link">
-                                                    <i class="fas fa-edit card-table-icon"></i>
-                                                </a>
-                                                <a href="" class="card-table-link">
-                                                    <i class="fas fa-trash-alt card-table-icon"></i>
-                                                </a>
-                                                <a href="" class="card-table-link">
-                                                    <i class="far fa-check-circle done card-table-icon"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                    <?php while($row=$result->fetch_assoc()): ?>
+
+<tr>
+    <td><?php echo $row['MaXe'];?></td>
+    <td><?php echo $row['TenXe'];?></td>
+    <td class="card-status-ready"><?php echo $row['TrangThai'];?></td>
+    <td><?php echo $row['GiaThanh'];?></td>
+    <td class="card-table-item">
+        <a href="/detailproductready.html" class="card-table-link">
+            <i class="fas fa-info-circle card-table-icon"></i>
+        </a>
+        <a href="" class="card-table-link">
+            <i class="fas fa-edit card-table-icon"></i>
+        </a>
+        <a href="" class="card-table-link">
+            <i class="fas fa-trash-alt card-table-icon"></i>
+        </a>
+        
+    </td>
+</tr>
+<?php endwhile; ?>
                                     </tbody>
                                 </table>
                             </div>

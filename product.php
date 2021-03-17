@@ -441,8 +441,12 @@ include 'config.php';
                                             </div>
                                             <div class="card-body_item ">
                                                 <label for="">Tình trạng xe<sup>*</sup></label>
-                                               
-                                                <input class="card-body_input card-status-ready" id="TrangThai" name="TrangThai"  require>
+                                               <select id="TrangThai" name="TrangThai">
+                                                    <option value="Sẵn Sàng">Sẵn Sàng</option>
+                                                    <option value="Đang Được Thuê">Đang Được Thuê</option>
+                                                    <option value="Tới Hạn Trả">Tới Hạn Trả</option>
+
+                                               </select>
                                                 
                                             </div>
                                             <div class="card-body_item ">
