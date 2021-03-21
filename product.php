@@ -126,7 +126,7 @@ include 'config.php';
                     <i class="fas fa-wallet"></i>
                     <span>Tài sản cửa hàng</span></a>
             </li>
-            
+
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="revenue.php">
@@ -277,7 +277,7 @@ include 'config.php';
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="">
+                                        <img class="rounded-circle" src="img/undraw_pdarofile_1.svg" alt="">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -330,7 +330,8 @@ include 'config.php';
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo htmlspecialchars($_SESSION["email"]); ?></span>
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo htmlspecialchars($_SESSION["email"]); ?></span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -365,62 +366,70 @@ include 'config.php';
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Danh sách xe tại cửa hàng</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Danh Sách Xe Tại Cửa Hàng</h1>
 
 
                     <!-- DataTales Example -->
+
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 card-product">
                             <div class="sub-card-product">
-                                <h6 class="m-0 font-weight-bold text-primary">Tất cả các xe</h6>
-                                <select name="category" id="category" class="card-select-product">
-                                    <option value="Tất cả">Tất cả</option>
-                                    <option value="Xe tay ga">Xe tay ga</option>
-                                    <option value="Xe số">Xe số</option>
-                                    <option value="Xe côn">Xe côn</option>
+                                <h6 class="m-0 font-weight-bold text-primary">Loại Xe</h6>
+                                <select name="Loaixe" id="Loaixe" class="card-select-product">
+                                    <option value="0">Tất cả</option>
+
                                 </select>
                             </div>
-                            
-                                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModalLong">Thêm xe </button>
-                            
-                                <form action="addproduct.php" method="post" enctype="multipart/form-data" class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                      <div class="modal-content">
+
+                            <button class="btn btn-primary" type="button" data-toggle="modal"
+                                data-target="#exampleModalLong">Thêm xe </button>
+
+                            <form action="addproduct.php" method="post" enctype="multipart/form-data" class="modal fade"
+                                id="exampleModalLong" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
                                         <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLongTitle">Thêm xe</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Thêm xe</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="card-body_item">
                                                 <label for="">Chọn hình ảnh xe<sup>*</sup></label>
-                                                <input class="card-body_input" type="file" id="HinhAnh" name="HinhAnh" multiple require>
+                                                <input class="card-body_input" type="file" id="HinhAnh" name="HinhAnh"
+                                                    multiple require>
                                             </div>
                                             <div class="card-body_item ">
                                                 <label for="">Tên xe<sup>*</sup></label>
-                                                <input class="card-body_input" type="text" id="TenXe" name="TenXe" required>
-                                                
+                                                <input class="card-body_input" type="text" id="TenXe" name="TenXe"
+                                                    required>
+
                                             </div>
                                             <div class="card-body_item ">
                                                 <label for="">Biển số xe<sup>*</sup></label>
-                                                <input class="card-body_input" type="text" id="BienSoXe" name="BienSoXe" required>
-                                                
+                                                <input class="card-body_input" type="text" id="BienSoXe" name="BienSoXe"
+                                                    required>
+
                                             </div>
                                             <div class="card-body_item ">
                                                 <label for="">Khung xe<sup>*</sup></label>
-                                                <input class="card-body_input" type="text" id="KhungXe" name="KhungXe" required>
-                                                
+                                                <input class="card-body_input" type="text" id="KhungXe" name="KhungXe"
+                                                    required>
+
                                             </div>
                                             <div class="card-body_item ">
                                                 <label for="">Màu sắc<sup>*</sup></label>
-                                                <input class="card-body_input" type="text" id="MauSac" name="MauSac" required>
-                                                
+                                                <input class="card-body_input" type="text" id="MauSac" name="MauSac"
+                                                    required>
+
                                             </div>
                                             <div class="card-body_item ">
                                                 <label for="">Năm đăng ký<sup>*</sup></label>
-                                                <input class="card-body_input" type="text" id="NamDangKy" name="NamDangKy" required>
-                                                
+                                                <input class="card-body_input" type="text" id="NamDangKy"
+                                                    name="NamDangKy" required>
+
                                             </div>
                                             <?php 
                                             
@@ -430,46 +439,50 @@ include 'config.php';
                                             <div class="card-body_item ">
                                                 <label for="">Loại xe<sup>*</sup></label>
                                                 <select name="TenLoaiXe" id="TenLoaiXe">
-                                                <?php 
+
+                                                    <?php 
                                                      foreach($result as $tl){
                                                     echo " <option value=".$tl['MaLoaiXe'].">".$tl['TenLoaiXe']."</option>";
                                                 }
                                                 ?>
-                                                    
+
                                                 </select>
-                                                
+
                                             </div>
                                             <div class="card-body_item ">
                                                 <label for="">Tình trạng xe<sup>*</sup></label>
-                                               <select id="TrangThai" name="TrangThai">
+                                                <select id="TrangThai" name="TrangThai">
                                                     <option value="Sẵn Sàng">Sẵn Sàng</option>
                                                     <option value="Đang Được Thuê">Đang Được Thuê</option>
                                                     <option value="Tới Hạn Trả">Tới Hạn Trả</option>
 
-                                               </select>
-                                                
+                                                </select>
+
                                             </div>
                                             <div class="card-body_item ">
                                                 <label for="">Giá Thành<sup>*</sup></label>
-                                                <input class="card-body_input" type="number" id="GiaThanh" name="GiaThanh" min="0"  required>
-                                                
+                                                <input class="card-body_input" type="number" id="GiaThanh"
+                                                    name="GiaThanh" min="0" required>
+
                                             </div>
-                                            
+
                                             <div class="card-body_item">
-                                            
+
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                          <input type="submit" id="submit" name="submit" class="btn btn-primary" value="Thêm mới">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Đóng</button>
+                                            <input type="submit" id="submit" name="submit" class="btn btn-primary"
+                                                value="Thêm mới">
                                         </div>
-                                      </div>
                                     </div>
-                                  </form>
+                                </div>
+                            </form>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                            <?php
+                                <?php
                                 // if (isset($errors)) {
                                 // echo implode('<br/>', $errors);
                                 // exit();
@@ -477,109 +490,164 @@ include 'config.php';
                                 // Include config file
                                 require_once 'config.php';
                                 // Attempt select query execution
-                                $sql = "SELECT chitietxe.MaXe,chitietxe.TenXe,chitietxe.BienSoXe,chitietxe.KhungXe,chitietxe.MauSac,chitietxe.NamDangKy,chitietxe.TrangThai,chitietxe.HinhAnh,chitietxe.GiaThanh,loaixe.TenLoaiXe,loaixe.SoLuong FROM (chitietxe inner join loaixe on chitietxe.MaLoaiXe = loaixe.MaLoaiXe)";
-                                if($result = mysqli_query($link, $sql)){
-                                    if(mysqli_num_rows($result) > 0){
+                                
+                                    
+                                $sql = "SELECT chitietxe.MaXe,chitietxe.TenXe,chitietxe.MaLoaiXe,chitietxe.BienSoXe,chitietxe.KhungXe,chitietxe.MauSac,chitietxe.NamDangKy,chitietxe.TrangThai,chitietxe.HinhAnh,chitietxe.GiaThanh,loaixe.TenLoaiXe,loaixe.SoLuong FROM (chitietxe inner join loaixe on chitietxe.MaLoaiXe = loaixe.MaLoaiXe)";
+                                
+                                if($result = mysqli_query($link, $sql)  ){
+                                    if(mysqli_num_rows($result)  > 0){
                                         echo "<table class='table table-bordered ' id='dataTable' width='100%' cellspacing='0'>" ;
                                             echo "<thead>";
                                                 echo "<tr>";
                                                     echo "<th>Mã xe</th>";
                                                     echo "<th>Tên xe</th>";
+                                                    echo "<th>Loại Xe</th>";
                                                     echo "<th>Tình trạng xe</th>";
                                                     echo "<th>Giá</th>";
-                                                    echo "<th>Số lượng</th>";
                                                     echo "<th>Thao tác</th>";
                                                 echo "</tr>";
                                                 echo "</thead>";
-                                                echo "<tbody>";
-                                        while($row = mysqli_fetch_array($result)){
-                                            echo "<tr>";
-                                                echo "<td>" . "XE00" . $row['MaXe'] . "</td>";
-                                                echo "<td>" . $row['TenXe'] . "</td>";
-                                                echo "<td class='card-status-ready'>" . $row['TrangThai'] . "</td>";
-                                                echo "<td>" . $row['GiaThanh'] . "đ" . "</td>";
-                                                echo "<td>" . $row['SoLuong'] . " ". "xe". "</td>";
-                                                echo "<td class='card-table-item'>";
-                                                    echo "<a class='card-table-link' href='detailproductready.php?MaXe=". $row['MaXe'] ."' title='View Record' data-toggle='tooltip'><i class='fas fa-info-circle card-table-icon'></i></a>";
-                                                    echo "
-                                                    <p class='card-table-link' style='margin-bottom:0;margin-left:15px;cursor:pointer'  title='Update Record' data-target='#exampleModalLong".$row['MaXe']."' data-toggle='modal'><i class='fas fa-edit card-table-icon update-config' ></i>
-                                                  
-                                                    <form action='updateproduct.php?MaXe=" . $row['MaXe'] . "' method='post' enctype='multipart/form-data' class='modal fade' id='exampleModalLong".$row['MaXe']."' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle".$row['MaXe']."' aria-hidden='true'>
-                                                    <div class='modal-dialog' role='document'>
-                                                      <div class='modal-content'>
+                                                ?>
+                                <tbody id="chitietxe">
+                                    <?php while($row = mysqli_fetch_array($result) ){ ?>
+                                    <tr>
+                                        <td><?php echo $row['MaXe'];?></td>
+                                        <td><?php echo $row['TenXe'];?></td>
+                                        <td><?php echo $row['TenLoaiXe'];?></td>
+                                        <td class='card-status-ready'><?php echo $row['TrangThai'];?></td>
+                                        <td><?php echo $row['GiaThanh']."đ";?></td>
+                                        <td class='card-table-item'>
+                                            <a class='card-table-link'
+                                                href='detailproductready.php?MaXe=<?php echo $row ['MaXe']; ?>'
+                                                title='View Record' data-toggle='tooltip'><i
+                                                    class='fas fa-info-circle card-table-icon'></i></a>
+                                            <p class='card-table-link'
+                                                style='margin-bottom:0;margin-left:15px;cursor:pointer'
+                                                title='Update Record'
+                                                data-target='#exampleModalLong<?php echo $row ['MaXe']; ?>'
+                                                data-toggle='modal'><i
+                                                    class='fas fa-edit card-table-icon update-config'></i>
+                                            <form action='updateproduct.php?MaXe=<?php echo $row ['MaXe']; ?>'
+                                                method='post' enctype='multipart/form-data' class='modal fade'
+                                                id='exampleModalLong<?php echo $row ['MaXe']; ?>' tabindex='-1'
+                                                role='dialog'
+                                                aria-labelledby='exampleModalLongTitle<?php echo $row ['MaXe']; ?>'
+                                                aria-hidden='true'>
+                                                <div class='modal-dialog' role='document'>
+                                                    <div class='modal-content'>
                                                         <div class='modal-header'>
-                                                          <h5 class='modal-title' id='exampleModalLongTitle".$row['MaXe']."'>Cập nhật xe</h5>
-                                                          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                                                            <span aria-hidden='true'>&times;</span>
-                                                          </button>
+                                                            <h5 class='modal-title'
+                                                                id='exampleModalLongTitle<?php echo $row ['MaXe']; ?>'>
+                                                                Cập
+                                                                nhật xe</h5>
+                                                            <button type='button' class='close' data-dismiss='modal'
+                                                                aria-label='Close'>
+                                                                <span aria-hidden='true'>&times;</span>
+                                                            </button>
                                                         </div>
                                                         <div class='modal-body'>
                                                             <div class='card-body_item'>
                                                                 <label for=''>Chọn hình ảnh xe<sup>*</sup></label>
-                                                                <input class='card-body_input' type='file'  name='HinhAnh' value=' " . $row['HinhAnh'] . "' multiple require>
+                                                                <input class='card-body_input' type='file'
+                                                                    name='HinhAnh'
+                                                                    value=' <?php echo $row ['HinhAnh']; ?>' multiple
+                                                                    require>
                                                             </div>
                                                             <div class='card-body_item '>
                                                                 <label for=''>Tên xe<sup>*</sup></label>
-                                                                <input class='card-body_input' type='text'  name='TenXe' value='" . $row['TenXe'] . "' required>
-                                                                
+                                                                <input class='card-body_input' type='text' name='TenXe'
+                                                                    value='<?php echo $row ['TenXe']; ?>' required>
                                                             </div>
                                                             <div class='card-body_item '>
                                                                 <label for=''>Biển số xe<sup>*</sup></label>
-                                                                <input class='card-body_input' type='text'  name='BienSoXe' value='" . $row['BienSoXe'] . "' required>
-                                                                
+                                                                <input class='card-body_input' type='text'
+                                                                    name='BienSoXe'
+                                                                    value='<?php echo $row ['BienSoXe']; ?>' required>
                                                             </div>
                                                             <div class='card-body_item '>
                                                                 <label for=''>Khung Xe<sup>*</sup></label>
-                                                                <input class='card-body_input' type='text'  name='KhungXe' value='" . $row['KhungXe'] . "' required>
-                                                                
+                                                                <input class='card-body_input' type='text'
+                                                                    name='KhungXe'
+                                                                    value='<?php echo $row ['KhungXe']; ?>' required>
                                                             </div>
                                                             <div class='card-body_item '>
                                                                 <label for=''>Màu Sắc<sup>*</sup></label>
-                                                                <input class='card-body_input' type='text'  name='MauSac' value='" . $row['MauSac'] . "' required>
-                                                                
+                                                                <input class='card-body_input' type='text' name='MauSac'
+                                                                    value='<?php echo $row ['MauSac']; ?>' required>
                                                             </div>
-                                                        
                                                             <div class='card-body_item '>
                                                                 <label for=''>Năm đăng ký<sup>*</sup></label>
-                                                                <input class='card-body_input' type='text'  name='NamDangKy' value='" . $row['NamDangKy'] . "' required>
-                                                                
+                                                                <input class='card-body_input' type='text'
+                                                                    name='NamDangKy'
+                                                                    value='<?php echo $row ['NamDangKy']; ?>' required>
+
                                                             </div>
-                                                            
-                                            
-                                                
-                                            
                                                             <div class='card-body_item '>
-                                                                <label for=''>Tình trạng xe<sup>*</sup></label>
-                                                                
-                                                                <input class='card-body_input card-status-ready'  name='TrangThai' value='" . $row['TrangThai'] . "' required>
-                                                                
+                                                                <label for=''>Loại xe<sup>*</sup></label>
+                                                                <select name='TenLoaiXe1' id='TenLoaiXe1'>
+                                                                    <option value='<?php echo $row ['MaLoaiXe']; ?>'>
+                                                                        <?php echo $row ['TenLoaiXe']; ?></option>
+                                                                    <?php
+                                                                $MaLoaiXe=$row ['MaLoaiXe']; 
+                                                                  $sql1="SELECT MaLoaiXe,TenLoaiXe FROM `loaixe` where MaLoaiXe NOT in (SELECT MaLoaiXe from `loaixe` where MaLoaiXe=$MaLoaiXe)";
+                                                                 $result1=$link->query($sql1);                                                        
+                                                                ?>
+                                                                    <?php 
+                                                             foreach($result1 as $tl1){
+                                                             ?>
+                                                                    <option value="<?php echo $tl1 ['MaLoaiXe']; ?>">
+                                                                        <?php echo $tl1 ['TenLoaiXe']; ?></option>
+                                                                    <?php
+                                                                }
+                                                             ?>
+                                                                </select>
+                                                            </div>
+                                                            <div class="card-body_item ">
+                                                                <label for="">Tình trạng xe<sup>*</sup></label>
+                                                                <select id="TrangThai" name="TrangThai">
+                                                                    <?php 
+                                                                 $TrangThai=$row ['TrangThai'];
+                                                                $array=['Sẵn Sàng','Đang Được Thuê','Tới Hạn Trả'];
+                                                             foreach($array as $tt){
+                                                             ?>
+                                                                    <option value="<?php echo $tt;?>"
+                                                                        <?php if($tt==$TrangThai) echo 'selected';?>>
+                                                                        <?php echo $tt;?>
+                                                                    </option>
+                                                                    <?php
+                                                                }
+                                                             ?>
+                                                                </select>
                                                             </div>
                                                             <div class='card-body_item '>
                                                                 <label for=''>Giá<sup>*</sup></label>
-                                                                <input class='card-body_input' type='number'  name='GiaThanh' min='0' value='" . $row['GiaThanh'] . "'  required>
-                                                                
-                                                            </div>
-                                                            
-                                                            <div class='card-body_item'>
-                                                            
+                                                                <input class='card-body_input' type='number'
+                                                                    name='GiaThanh' min='0'
+                                                                    value='<?php echo $row ['GiaThanh']; ?>' required>
                                                             </div>
                                                         </div>
                                                         <div class='modal-footer'>
-                                                          <button type='button' class='btn btn-secondary' data-dismiss='modal'>Đóng</button>
-                                                          <input type='submit'  name='submit' class='btn btn-primary' value='Cập nhật'>
+                                                            <button type='button' class='btn btn-secondary'
+                                                                data-dismiss='modal'>Đóng</button>
+                                                            <input type='submit' name='submit' class='btn btn-primary'
+                                                                value='Cập nhật'>
                                                         </div>
-                                                      </div>
                                                     </div>
-                                                  </form>
-                                                </p>";
-                                                    echo "<a class='card-table-link' href='deleteproduct.php?MaXe=". $row['MaXe'] ."' title='Delete Record' data-toggle='tooltip'><i class='fas fa-trash-alt card-table-icon'></i></a>";
-                                                echo "</td>";
-                                            echo "</tr>";
+                                                </div>
+                                            </form>
+                                            </p>
+                                            <a class='card-table-link'
+                                                href='deleteproduct.php?MaXe=<?php echo $row ['MaXe']; ?>'
+                                                title='Delete Record' data-toggle='tooltip'><i
+                                                    class='fas fa-trash-alt card-table-icon'></i></a>
+                                        </td>
+                                    </tr>
+                                    <?php   
                                         }
-                                        echo "</tbody>";    
+                                        ?>
 
-                                        echo "</table>";
-                                        // Free result set
+                                    </table>
+                                    <?php
                                         mysqli_free_result($result);
                                         } else{
                                             echo "<p class='lead'><em>Không có xe nào tại cửa hàng.</em></p>";
@@ -587,14 +655,15 @@ include 'config.php';
                                         } else{
                                             echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                                         }
-            
+                                            ?>
+                                    <?php
                                         // Close connection
                                         mysqli_close($link);
                                 
-                            ?>
-                            
-                            
-                                <!-- <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        ?>
+
+
+                                    <!-- <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 
                                     <thead>
                                         <tr>
@@ -632,7 +701,7 @@ include 'config.php';
                                     </tbody>
                                 </table> -->
                             </div>
-                            
+
                         </div>
                     </div>
 
@@ -700,12 +769,39 @@ include 'config.php';
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();   
-        });
-        
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
     </script>
-    
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        function loadData(type, MaLoaiXe) {
+            $.ajax({
+                url: "loadtatcaxe.php",
+                type: "POST",
+                data: {
+                    type: type,
+                    id: MaLoaiXe
+                },
+                success: function(data) {
+                    if (type == "Loadtatcaxe") {
+                        $("#chitietxe").html(data);
+
+                    } else {
+                        $("#Loaixe").append(data);
+
+                    }
+                }
+            });
+        }
+        loadData();
+        $("#Loaixe").on("change", function() {
+            var Loaixe = $("#Loaixe").val();
+            loadData("Loadtatcaxe", Loaixe);
+        });
+    });
+    </script>
 </body>
 
 </html>

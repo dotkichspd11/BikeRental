@@ -1,7 +1,6 @@
 <?php
 include 'config.php';
 $MaXe = $_GET['MaXe'];
-
 if(isset($_POST['submit']))
 {
 	$TenXe = $_POST["TenXe"];
@@ -12,7 +11,7 @@ if(isset($_POST['submit']))
     $NamDangKy = $_POST["NamDangKy"];
     $TrangThai = $_POST["TrangThai"];
     // $TenLoaiXe = $_POST["TenLoaiXe"];        
-	$TenLoaiXe = $_REQUEST["TenLoaiXe"];
+	$TenLoaiXe1 = $_REQUEST["TenLoaiXe1"];
  
 
 	$msg = "";
@@ -25,7 +24,7 @@ if(isset($_POST['submit']))
   		$msg = "Failed to upload image";
   	}
 
-	$update = "UPDATE chitietxe SET TenXe='$TenXe', BienSoXe = '$BienSoXe', KhungXe = '$KhungXe', MauSac = '$MauSac', GiaThanh = '$GiaThanh', NamDangKy = '$NamDangKy', MaLoaiXe='$TenLoaiXe' TrangThai = '$TrangThai', HinhAnh = '$HinhAnh'  WHERE MaXe = $MaXe ";
+	$update = "UPDATE chitietxe SET TenXe='$TenXe', BienSoXe = '$BienSoXe', KhungXe = '$KhungXe', MauSac = '$MauSac', GiaThanh = '$GiaThanh', NamDangKy = '$NamDangKy', MaLoaiXe=$TenLoaiXe1, TrangThai = '$TrangThai', HinhAnh = '$HinhAnh'  WHERE MaXe = $MaXe ";
 	$run_update = mysqli_query($link,$update);
 
 	if($run_update){
