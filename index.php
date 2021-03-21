@@ -110,7 +110,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         <a class="collapse-item" href="detailproductready.php">Xe sẵn sàng</a>
                         <a class="collapse-item" href="detailproductrented.php">Xe đang thuê</a>
                         <a class="collapse-item" href="detailproductdeadline.php">Xe tới hạn trả</a>
-                        <a class="collapse-item" href="detailproduct.php">Xe hỏng</a>
                     </div>
                 </div>
             </li>
