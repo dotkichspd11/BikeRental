@@ -500,10 +500,11 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 
                                     <thead>
-                                        <tr>
+                                        <tr style="text-align:center">
                                             <th>Mã xe</th>
                                             <th>Tên xe</th>
-                                            <th>Loại Xe</th>
+                                            <th>Loại xe</th>
+                                            <th>Hình ảnh</th>
                                             <th>Tình trạng xe</th>
                                             <th>Giá</th>
                                             <th>Thao tác</th>
@@ -513,10 +514,13 @@
                                     <tbody id="chitietxe">
                                         <?php while($row=$result->fetch_assoc()): ?>
 
-                                        <tr>
+                                        <tr style="text-align:center">
                                             <td><?php echo $row['MaXe'];?></td>
                                             <td><?php echo $row['TenXe'];?></td>
                                             <td><?php echo $row['TenLoaiXe'];?></td>
+                                            <td><img style="height:50px;weight:100px"
+                                                    src="img/<?php echo $row['HinhAnh']?>">
+                                            </td>
                                             <td class="card-status-ready"><?php echo $row['TrangThai'];?></td>
                                             <td><?php echo $row['GiaThanh']."đ";?></td>
                                             <td class="card-table-item">
@@ -531,139 +535,144 @@
                                                     data-toggle='modal'><i
                                                         class='fas fa-edit card-table-icon update-config'></i>
 
-                                                <form action='updateproduct.php?MaXe=<?php echo $row ['MaXe']; ?>'
-                                                    method='post' enctype='multipart/form-data' class='modal fade'
-                                                    id='exampleModalLong<?php echo $row ['MaXe']; ?>' tabindex='-1'
-                                                    role='dialog'
-                                                    aria-labelledby='exampleModalLongTitle<?php echo $row ['MaXe']; ?>'
-                                                    aria-hidden='true'>
-                                                    <div class='modal-dialog' role='document'>
-                                                        <div class='modal-content'>
-                                                            <div class='modal-header'>
-                                                                <h5 class='modal-title'
-                                                                    id='exampleModalLongTitle<?php echo $row ['MaXe']; ?>'>
-                                                                    Cập nhật xe</h5>
-                                                                <button type='button' class='close' data-dismiss='modal'
-                                                                    aria-label='Close'>
-                                                                    <span aria-hidden='true'>&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class='modal-body'>
-                                                                <div class='card-body_item'>
-                                                                    <label for=''>Chọn hình ảnh xe<sup>*</sup></label>
-                                                                    <input class='card-body_input' type='file'
-                                                                        name='HinhAnh'
-                                                                        value=' <?php echo $row ['HinhAnh']; ?>'
-                                                                        multiple require>
+                                                    <form action='updateproduct.php?MaXe=<?php echo $row ['MaXe']; ?>'
+                                                        method='post' enctype='multipart/form-data' class='modal fade'
+                                                        id='exampleModalLong<?php echo $row ['MaXe']; ?>' tabindex='-1'
+                                                        role='dialog'
+                                                        aria-labelledby='exampleModalLongTitle<?php echo $row ['MaXe']; ?>'
+                                                        aria-hidden='true'>
+                                                        <div class='modal-dialog' role='document'>
+                                                            <div class='modal-content'>
+                                                                <div class='modal-header'>
+                                                                    <h5 class='modal-title'
+                                                                        id='exampleModalLongTitle<?php echo $row ['MaXe']; ?>'>
+                                                                        Cập nhật xe</h5>
+                                                                    <button type='button' class='close'
+                                                                        data-dismiss='modal' aria-label='Close'>
+                                                                        <span aria-hidden='true'>&times;</span>
+                                                                    </button>
                                                                 </div>
-                                                                <div class='card-body_item '>
-                                                                    <label for=''>Tên xe<sup>*</sup></label>
-                                                                    <input class='card-body_input' type='text'
-                                                                        name='TenXe'
-                                                                        value='<?php echo $row ['TenXe']; ?>' required>
+                                                                <div class='modal-body'>
+                                                                    <div class='card-body_item'>
+                                                                        <label for=''>Chọn hình ảnh
+                                                                            xe<sup>*</sup></label>
+                                                                        <input class='card-body_input' type='file'
+                                                                            name='HinhAnh'
+                                                                            value=' <?php echo $row ['HinhAnh']; ?>'
+                                                                            multiple require>
+                                                                    </div>
+                                                                    <div class='card-body_item '>
+                                                                        <label for=''>Tên xe<sup>*</sup></label>
+                                                                        <input class='card-body_input' type='text'
+                                                                            name='TenXe'
+                                                                            value='<?php echo $row ['TenXe']; ?>'
+                                                                            required>
 
-                                                                </div>
-                                                                <div class='card-body_item '>
-                                                                    <label for=''>Biển số xe<sup>*</sup></label>
-                                                                    <input class='card-body_input' type='text'
-                                                                        name='BienSoXe'
-                                                                        value='<?php echo $row ['BienSoXe']; ?>'
-                                                                        required>
+                                                                    </div>
+                                                                    <div class='card-body_item '>
+                                                                        <label for=''>Biển số xe<sup>*</sup></label>
+                                                                        <input class='card-body_input' type='text'
+                                                                            name='BienSoXe'
+                                                                            value='<?php echo $row ['BienSoXe']; ?>'
+                                                                            required>
 
-                                                                </div>
-                                                                <div class='card-body_item '>
-                                                                    <label for=''>Khung Xe<sup>*</sup></label>
-                                                                    <input class='card-body_input' type='text'
-                                                                        name='KhungXe'
-                                                                        value='<?php echo $row ['KhungXe']; ?>'
-                                                                        required>
+                                                                    </div>
+                                                                    <div class='card-body_item '>
+                                                                        <label for=''>Khung Xe<sup>*</sup></label>
+                                                                        <input class='card-body_input' type='text'
+                                                                            name='KhungXe'
+                                                                            value='<?php echo $row ['KhungXe']; ?>'
+                                                                            required>
 
-                                                                </div>
-                                                                <div class='card-body_item '>
-                                                                    <label for=''>Màu Sắc<sup>*</sup></label>
-                                                                    <input class='card-body_input' type='text'
-                                                                        name='MauSac'
-                                                                        value='<?php echo $row ['MauSac']; ?>' required>
+                                                                    </div>
+                                                                    <div class='card-body_item '>
+                                                                        <label for=''>Màu Sắc<sup>*</sup></label>
+                                                                        <input class='card-body_input' type='text'
+                                                                            name='MauSac'
+                                                                            value='<?php echo $row ['MauSac']; ?>'
+                                                                            required>
 
-                                                                </div>
+                                                                    </div>
 
-                                                                <div class='card-body_item '>
-                                                                    <label for=''>Năm đăng ký<sup>*</sup></label>
-                                                                    <input class='card-body_input' type='text'
-                                                                        name='NamDangKy'
-                                                                        value='<?php echo $row ['NamDangKy']; ?>'
-                                                                        required>
+                                                                    <div class='card-body_item '>
+                                                                        <label for=''>Năm đăng ký<sup>*</sup></label>
+                                                                        <input class='card-body_input' type='text'
+                                                                            name='NamDangKy'
+                                                                            value='<?php echo $row ['NamDangKy']; ?>'
+                                                                            required>
 
-                                                                </div>
+                                                                    </div>
 
 
-                                                                <div class='card-body_item '>
-                                                                    <label for=''>Loại xe<sup>*</sup></label>
+                                                                    <div class='card-body_item '>
+                                                                        <label for=''>Loại xe<sup>*</sup></label>
 
-                                                                    <select name='TenLoaiXe1' id='TenLoaiXe1'>
-                                                                        <option
-                                                                            value='<?php echo $row ['MaLoaiXe']; ?>'>
-                                                                            <?php echo $row ['TenLoaiXe']; ?></option>;
-                                                                        <?php
+                                                                        <select name='TenLoaiXe1' id='TenLoaiXe1'>
+                                                                            <option
+                                                                                value='<?php echo $row ['MaLoaiXe']; ?>'>
+                                                                                <?php echo $row ['TenLoaiXe']; ?>
+                                                                            </option>;
+                                                                            <?php
                                                               $MaLoaiXe=$row ['MaLoaiXe']; 
                                                                 $sql1="SELECT MaLoaiXe,TenLoaiXe FROM `loaixe` where MaLoaiXe NOT in (SELECT MaLoaiXe from `loaixe` where MaLoaiXe=$MaLoaiXe)";
                                                                $result1=$link->query($sql1);                                                        
                                                               ?>
-                                                                        <?php 
+                                                                            <?php 
                                                            foreach($result1 as $tl1){
                                                            ?>
-                                                                        <option
-                                                                            value="<?php echo $tl1 ['MaLoaiXe']; ?>">
-                                                                            <?php echo $tl1 ['TenLoaiXe']; ?></option>
-                                                                        <?php
+                                                                            <option
+                                                                                value="<?php echo $tl1 ['MaLoaiXe']; ?>">
+                                                                                <?php echo $tl1 ['TenLoaiXe']; ?>
+                                                                            </option>
+                                                                            <?php
                                                               }
                                                            ?>
-                                                                    </select>
+                                                                        </select>
 
-                                                                </div>
+                                                                    </div>
 
-                                                                <div class="card-body_item ">
-                                                                    <label for="">Trạng Thái<sup>*</sup></label>
-                                                                    <select id="TrangThai" name="TrangThai">
-                                                                        <?php 
+                                                                    <div class="card-body_item ">
+                                                                        <label for="">Trạng Thái<sup>*</sup></label>
+                                                                        <select id="TrangThai" name="TrangThai">
+                                                                            <?php 
                                                                  $TrangThai=$row ['TrangThai'];
                                                                 $array=['Sẵn Sàng','Đang Được Thuê','Tới Hạn Trả'];
                                                              foreach($array as $tt){
                                                              ?>
-                                                                        <option value="<?php echo $tt;?>"
-                                                                            <?php if($tt==$TrangThai) echo 'selected';?>>
-                                                                            <?php echo $tt;?>
-                                                                        </option>
-                                                                        <?php
+                                                                            <option value="<?php echo $tt;?>"
+                                                                                <?php if($tt==$TrangThai) echo 'selected';?>>
+                                                                                <?php echo $tt;?>
+                                                                            </option>
+                                                                            <?php
                                                                 }
                                                              ?>
 
 
-                                                                    </select>
+                                                                        </select>
 
+                                                                    </div>
+                                                                    <div class='card-body_item '>
+                                                                        <label for=''>Giá<sup>*</sup></label>
+                                                                        <input class='card-body_input' type='number'
+                                                                            name='GiaThanh' min='0'
+                                                                            value='<?php echo $row ['GiaThanh']; ?>'
+                                                                            required>
+
+                                                                    </div>
+
+                                                                    <div class='card-body_item'>
+
+                                                                    </div>
                                                                 </div>
-                                                                <div class='card-body_item '>
-                                                                    <label for=''>Giá<sup>*</sup></label>
-                                                                    <input class='card-body_input' type='number'
-                                                                        name='GiaThanh' min='0'
-                                                                        value='<?php echo $row ['GiaThanh']; ?>'
-                                                                        required>
-
+                                                                <div class='modal-footer'>
+                                                                    <button type='button' class='btn btn-secondary'
+                                                                        data-dismiss='modal'>Đóng</button>
+                                                                    <input type='submit' name='submit'
+                                                                        class='btn btn-primary' value='Cập nhật'>
                                                                 </div>
-
-                                                                <div class='card-body_item'>
-
-                                                                </div>
-                                                            </div>
-                                                            <div class='modal-footer'>
-                                                                <button type='button' class='btn btn-secondary'
-                                                                    data-dismiss='modal'>Đóng</button>
-                                                                <input type='submit' name='submit'
-                                                                    class='btn btn-primary' value='Cập nhật'>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </form>
+                                                    </form>
                                                 </p>
                                                 <a href="deleteproduct.php?MaXe=<?php echo $row ['MaXe']; ?>"
                                                     class="card-table-link">

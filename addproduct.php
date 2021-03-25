@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
   		$msg = "Failed to upload image";
   	}
 
-  	$insert_data = "INSERT INTO chitietxe (MaLoaiXe,TenXe,BienSoXe,KhungXe,MauSac,GiaThanh,NamDangKy,TrangThai) VALUES ('$TenLoaiXe','$TenXe','$BienSoXe','$KhungXe','$MauSac','$GiaThanh','$NamDangKy','$TrangThai')";
+  	$insert_data = "INSERT INTO chitietxe (MaLoaiXe,TenXe,BienSoXe,KhungXe,MauSac,GiaThanh,NamDangKy,TrangThai,HinhAnh) VALUES ('$TenLoaiXe','$TenXe','$BienSoXe','$KhungXe','$MauSac','$GiaThanh','$NamDangKy','$TrangThai','$HinhAnh')";
   	 
     $run_data = mysqli_query($link,$insert_data);
 
