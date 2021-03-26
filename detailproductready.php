@@ -184,7 +184,7 @@ if(isset($_GET["MaXe"]) && !empty(trim($_GET["MaXe"]))){
                     <i class="fas fa-wallet"></i>
                     <span>Tài sản cửa hàng</span></a>
             </li>
-            
+
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="revenue.php">
@@ -193,7 +193,7 @@ if(isset($_GET["MaXe"]) && !empty(trim($_GET["MaXe"]))){
             </li>
 
             <!-- Nav Item - Support -->
-            <li class="nav-item"  style="margin-left: 3px;">
+            <li class="nav-item" style="margin-left: 3px;">
                 <a class="nav-link" href="support.php">
                     <i class="fas fa-info-circle"></i>
                     <span>Hỗ trợ</span></a>
@@ -222,7 +222,7 @@ if(isset($_GET["MaXe"]) && !empty(trim($_GET["MaXe"]))){
 
 
 
-           
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -232,7 +232,7 @@ if(isset($_GET["MaXe"]) && !empty(trim($_GET["MaXe"]))){
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-            
+
 
         </ul>
         <!-- End of Sidebar -->
@@ -412,7 +412,8 @@ if(isset($_GET["MaXe"]) && !empty(trim($_GET["MaXe"]))){
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo htmlspecialchars($_SESSION["email"]); ?></span>
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo htmlspecialchars($_SESSION["email"]); ?></span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -458,7 +459,7 @@ if(isset($_GET["MaXe"]) && !empty(trim($_GET["MaXe"]))){
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Thông tin</h6>
                                 </div>
-                                
+
                                 <div class="card-body card-body_config">
                                     <div class="card-image-product">
                                         <?php 
@@ -471,103 +472,132 @@ if(isset($_GET["MaXe"]) && !empty(trim($_GET["MaXe"]))){
                                         <span class="card-info-price"><?php echo $row["GiaThanh"]; ?>đ</span>
                                         <div class="card-info-category">
                                             <div class="card-info-item">
-                                                <span>Biển số xe</span>                                          
-                                                <span style="margin-left: 60px;font-weight: bold;"><?php echo $row["BienSoXe"]; ?></span>
+                                                <span>Biển số xe</span>
+                                                <span
+                                                    style="margin-left: 60px;font-weight: bold;"><?php echo $row["BienSoXe"]; ?></span>
                                                 <!-- <p>SH 2020 có công suất vượt trội hơn hẳn so với những phiên bản tiền nhiệm nhờ 3 yếu tố chính: áp dụng động cơ 4 van thế hệ mới với diện tích bề mặt van được mở rộng, cải thiện hiệu suất khí nạp và khí xả; kết hợp với đó là sự gia tăng về hệ số đường kính x hành trình piston cùng thiết kế trục khuyủ mới, cải thiện độ cứng và ngăn chặn sự lệch do lực quán tính và năng lượng đốt cháy được tạo ra ở vòng tua, dẫn đến giảm tiếng ồn và độ rung nhằm mang lại công suất cao cho cỗ máy.</p> -->
                                             </div>
                                             <div class="card-info-item">
-                                                <span>Khung Xe</span>                                          
-                                                <span style="margin-left: 60px;font-weight: bold;"><?php echo $row["KhungXe"]; ?></span>
+                                                <span>Khung Xe</span>
+                                                <span
+                                                    style="margin-left: 60px;font-weight: bold;"><?php echo $row["KhungXe"]; ?></span>
                                                 <!-- <p>SH 2020 có công suất vượt trội hơn hẳn so với những phiên bản tiền nhiệm nhờ 3 yếu tố chính: áp dụng động cơ 4 van thế hệ mới với diện tích bề mặt van được mở rộng, cải thiện hiệu suất khí nạp và khí xả; kết hợp với đó là sự gia tăng về hệ số đường kính x hành trình piston cùng thiết kế trục khuyủ mới, cải thiện độ cứng và ngăn chặn sự lệch do lực quán tính và năng lượng đốt cháy được tạo ra ở vòng tua, dẫn đến giảm tiếng ồn và độ rung nhằm mang lại công suất cao cho cỗ máy.</p> -->
                                             </div>
                                             <div class="card-info-item">
-                                                <span>Màu Sắc</span>                                          
-                                                <span style="margin-left: 60px;font-weight: bold;"><?php echo $row["MauSac"]; ?></span>
+                                                <span>Màu Sắc</span>
+                                                <span
+                                                    style="margin-left: 60px;font-weight: bold;"><?php echo $row["MauSac"]; ?></span>
                                                 <!-- <p>SH 2020 có công suất vượt trội hơn hẳn so với những phiên bản tiền nhiệm nhờ 3 yếu tố chính: áp dụng động cơ 4 van thế hệ mới với diện tích bề mặt van được mở rộng, cải thiện hiệu suất khí nạp và khí xả; kết hợp với đó là sự gia tăng về hệ số đường kính x hành trình piston cùng thiết kế trục khuyủ mới, cải thiện độ cứng và ngăn chặn sự lệch do lực quán tính và năng lượng đốt cháy được tạo ra ở vòng tua, dẫn đến giảm tiếng ồn và độ rung nhằm mang lại công suất cao cho cỗ máy.</p> -->
                                             </div>
                                             <div class="card-info-item">
-                                                <span>Năm đăng ký</span>                                          
-                                                <span style="margin-left: 60px;font-weight: bold;"><?php echo $row["NamDangKy"]; ?></span>
+                                                <span>Năm đăng ký</span>
+                                                <span
+                                                    style="margin-left: 60px;font-weight: bold;"><?php echo $row["NamDangKy"]; ?></span>
                                                 <!-- <p>SH 2020 có công suất vượt trội hơn hẳn so với những phiên bản tiền nhiệm nhờ 3 yếu tố chính: áp dụng động cơ 4 van thế hệ mới với diện tích bề mặt van được mở rộng, cải thiện hiệu suất khí nạp và khí xả; kết hợp với đó là sự gia tăng về hệ số đường kính x hành trình piston cùng thiết kế trục khuyủ mới, cải thiện độ cứng và ngăn chặn sự lệch do lực quán tính và năng lượng đốt cháy được tạo ra ở vòng tua, dẫn đến giảm tiếng ồn và độ rung nhằm mang lại công suất cao cho cỗ máy.</p> -->
                                             </div>
                                             <div class="card-info-item">
-                                                <span>Loại xe</span>                                          
-                                                <span style="margin-left: 60px;font-weight: bold;"><?php echo $row["TenLoaiXe"]; ?></span>
+                                                <span>Loại xe</span>
+                                                <span
+                                                    style="margin-left: 60px;font-weight: bold;"><?php echo $row["TenLoaiXe"]; ?></span>
                                                 <!-- <p>SH 2020 có công suất vượt trội hơn hẳn so với những phiên bản tiền nhiệm nhờ 3 yếu tố chính: áp dụng động cơ 4 van thế hệ mới với diện tích bề mặt van được mở rộng, cải thiện hiệu suất khí nạp và khí xả; kết hợp với đó là sự gia tăng về hệ số đường kính x hành trình piston cùng thiết kế trục khuyủ mới, cải thiện độ cứng và ngăn chặn sự lệch do lực quán tính và năng lượng đốt cháy được tạo ra ở vòng tua, dẫn đến giảm tiếng ồn và độ rung nhằm mang lại công suất cao cho cỗ máy.</p> -->
                                             </div>
                                             <div class="card-info-item">
                                                 <span>Số lượng</span>
                                                 <div class="card-info-item_btn">
                                                     <!-- <button type="button" class="btn btn-light">-</button> -->
-                                                    <input type="number" min="1" value="1" class="card-info-quantity_input">
+                                                    <input type="number" min="1" value="1"
+                                                        class="card-info-quantity_input">
                                                     <!-- <button type="button" class="btn btn-light">+</button> -->
                                                 </div>
                                             </div>
                                             <div class="card-info-item">
                                                 <span style="line-height: 38px;margin-right: 14px;">Tình trạng xe</span>
-                                                <button type="button" class="btn btn-success"><?php echo $row["TrangThai"]; ?></button>
+                                                <button type="button"
+                                                    class="btn btn-success"><?php echo $row["TrangThai"]; ?></button>
                                             </div>
                                             <!-- <div class="card-info-item">
                                                 <span style="line-height: 38px;margin-right: 14px;">Mô tả</span>
                                                 <span style="margin-left: 54px;line-height:37.27px;font-weight: bold;"><?php echo $row["description"]; ?></span>
                                             </div> -->
                                             <div class="card-info-btn">
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">Thuê xe</button>
-                                                <form action="rentproduct.php" method="post" enctype="multipart/form-data"  class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#exampleModalLong">Thuê xe</button>
+                                                <form action="rentproduct.php" method="post"
+                                                    enctype="multipart/form-data" class="modal fade"
+                                                    id="exampleModalLong" tabindex="-1" role="dialog"
+                                                    aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
-                                                      <div class="modal-content">
-                                                        <div class="modal-header">
-                                                          <h5 class="modal-title" id="exampleModalLongTitle">Thông tin khách hàng thuê "<?php echo $row["name"]; ?>"</h5>
-                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                          </button>
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLongTitle">Nhập
+                                                                    thông
+                                                                    tin khách hàng thuê </h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+
+                                                                <div class="card-body_item">
+                                                                    <label for="">Nhập tên khách
+                                                                        hàng<sup>*</sup></label>
+                                                                    <input class="card-body_input" type="text"
+                                                                        id="namecus" name="namecus" required>
+                                                                </div>
+                                                                <div class="card-body_item">
+                                                                    <label for="">Địa chỉ<sup>*</sup></label>
+                                                                    <input class="card-body_input" type="text"
+                                                                        id="address" name="address" required>
+                                                                </div>
+                                                                <div class="card-body_item">
+                                                                    <label for="">Ngày thuê xe<sup>*</sup></label>
+                                                                    <input class="card-body_input" type="date"
+                                                                        id="datestart" name="datestart" required>
+                                                                </div>
+                                                                <div class="card-body_item">
+                                                                    <label for="">Ngày trả xe<sup>*</sup></label>
+                                                                    <input class="card-body_input" type="date"
+                                                                        id="datefinish" name="datefinish" required>
+                                                                </div>
+                                                                <div class="card-body_item">
+                                                                    <label for="">CMND mặt trước<sup>*</sup></label>
+                                                                    <input class="card-body_input" type="file"
+                                                                        id="frontimg" name="frontimg" required>
+                                                                </div>
+                                                                <div class="card-body_item">
+                                                                    <label for="">CMND mặt sau<sup>*</sup></label>
+                                                                    <input class="card-body_input" type="file"
+                                                                        id="backimg" name="backimg" required>
+                                                                </div>
+                                                                <div class="card-body_item">
+                                                                    <label for="">Hình thức thanh
+                                                                        toán<sup>*</sup></label>
+                                                                    <select name="select_item-bank"
+                                                                        id="select_item-bank">
+                                                                        <option value="Thanh toán trực tuyến">Thanh toán
+                                                                            trực tuyến</option>
+                                                                        <option value="Thanh toán trực tiếp">Thanh toán
+                                                                            trực tiếp</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="card-body_item">
+                                                                    <label for="">Ghi chú<sup>*</sup></label>
+                                                                    <input style="margin-left:1px"
+                                                                        class="card-body_input" type="text" id="note"
+                                                                        name="note" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Đóng</button>
+                                                                <button type="submit" id="submit" name="submit"
+                                                                    class="btn btn-primary">Xác nhận</button>
+                                                            </div>
                                                         </div>
-                                                        <div class="modal-body">
-                                                            
-                                                            <div class="card-body_item">
-                                                                <label for="">Nhập tên khách hàng<sup>*</sup></label>
-                                                                <input class="card-body_input" type="text" id="namecus" name="namecus" required>
-                                                            </div>
-                                                            <div class="card-body_item">
-                                                                <label for="">Địa chỉ<sup>*</sup></label>
-                                                                <input class="card-body_input" type="text" id="address" name="address" required>
-                                                            </div>
-                                                            <div class="card-body_item">
-                                                                <label for="">Ngày thuê xe<sup>*</sup></label>
-                                                                <input class="card-body_input" type="date" id="datestart" name="datestart" required>
-                                                            </div>
-                                                            <div class="card-body_item">
-                                                                <label for="">Ngày trả xe<sup>*</sup></label>
-                                                                <input class="card-body_input" type="date" id="datefinish" name="datefinish" required>
-                                                            </div>
-                                                            <div class="card-body_item">
-                                                                <label for="">CMND mặt trước<sup>*</sup></label>
-                                                                <input class="card-body_input" type="file" id="frontimg" name="frontimg" required>
-                                                            </div>
-                                                            <div class="card-body_item">
-                                                                <label for="">CMND mặt sau<sup>*</sup></label>
-                                                                <input class="card-body_input" type="file" id="backimg" name="backimg" required>
-                                                            </div>
-                                                            <div class="card-body_item">
-                                                                <label for="">Hình thức thanh toán<sup>*</sup></label>
-                                                                <select name="select_item-bank" id="select_item-bank">
-                                                                    <option value="Thanh toán trực tuyến">Thanh toán trực tuyến</option>
-                                                                    <option value="Thanh toán trực tiếp">Thanh toán trực tiếp</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="card-body_item">
-                                                                <label for="">Ghi chú<sup>*</sup></label>
-                                                                <input style="margin-left:1px" class="card-body_input" type="text" id="note" name="note" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                                          <button type="submit" id="submit" name="submit" class="btn btn-primary">Xác nhận</button>
-                                                        </div>
-                                                      </div>
                                                     </div>
-                                                  </form>
-                                                  <a href="product.php">
+                                                </form>
+                                                <a href="product.php">
                                                     <button type="button" class="btn btn-secondary">Quay lại</button>
                                                 </a>
                                             </div>
