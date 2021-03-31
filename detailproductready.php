@@ -501,15 +501,7 @@ if(isset($_GET["MaXe"]) && !empty(trim($_GET["MaXe"]))){
                                                     style="margin-left: 60px;font-weight: bold;"><?php echo $row["TenLoaiXe"]; ?></span>
                                                 <!-- <p>SH 2020 có công suất vượt trội hơn hẳn so với những phiên bản tiền nhiệm nhờ 3 yếu tố chính: áp dụng động cơ 4 van thế hệ mới với diện tích bề mặt van được mở rộng, cải thiện hiệu suất khí nạp và khí xả; kết hợp với đó là sự gia tăng về hệ số đường kính x hành trình piston cùng thiết kế trục khuyủ mới, cải thiện độ cứng và ngăn chặn sự lệch do lực quán tính và năng lượng đốt cháy được tạo ra ở vòng tua, dẫn đến giảm tiếng ồn và độ rung nhằm mang lại công suất cao cho cỗ máy.</p> -->
                                             </div>
-                                            <div class="card-info-item">
-                                                <span>Số lượng</span>
-                                                <div class="card-info-item_btn">
-                                                    <!-- <button type="button" class="btn btn-light">-</button> -->
-                                                    <input type="number" min="1" value="1"
-                                                        class="card-info-quantity_input">
-                                                    <!-- <button type="button" class="btn btn-light">+</button> -->
-                                                </div>
-                                            </div>
+
                                             <div class="card-info-item">
                                                 <span style="line-height: 38px;margin-right: 14px;">Tình trạng xe</span>
                                                 <button type="button"
@@ -531,7 +523,7 @@ if(isset($_GET["MaXe"]) && !empty(trim($_GET["MaXe"]))){
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLongTitle">Nhập
                                                                     thông
-                                                                    tin khách hàng thuê </h5>
+                                                                    tin thuê xe</h5>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
@@ -552,12 +544,12 @@ if(isset($_GET["MaXe"]) && !empty(trim($_GET["MaXe"]))){
                                                                 </div>
                                                                 <div class="card-body_item">
                                                                     <label for="">Ngày thuê xe<sup>*</sup></label>
-                                                                    <input class="card-body_input" type="date"
+                                                                    <input class="card-body_input" type="datetime-local"
                                                                         id="datestart" name="datestart" required>
                                                                 </div>
                                                                 <div class="card-body_item">
                                                                     <label for="">Ngày trả xe<sup>*</sup></label>
-                                                                    <input class="card-body_input" type="date"
+                                                                    <input class="card-body_input" type="datetime-local"
                                                                         id="datefinish" name="datefinish" required>
                                                                 </div>
                                                                 <div class="card-body_item">
