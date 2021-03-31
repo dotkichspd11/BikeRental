@@ -324,6 +324,59 @@ include 'config.php';
                             </div>
                         </li>
 
+                        <!-- Giỏ Hàng -------------------------------- -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="cartProducts" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-shopping-cart"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter">3+</span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Thông tin giỏ hàng
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="col-4">
+                                        <img style="height:50px;with:100px"
+                                            src="https://image.pharmacity.vn/live/uploads/2020/01/P15789_4_l.jpg"
+                                            alt="test">
+                                    </div>
+                                    <div class="col-4">
+                                        <div>Xe Winner</div>
+
+
+                                    </div>
+                                    <div style="text-align: right" class="col-4">
+                                        <div>Giá</div>
+                                        <span class="font-weight-bold small text-gray-700"> 10000đ </span>
+
+
+                                    </div>
+                                </a>
+
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+
+
+                                    <div class="col-4">
+                                        <h5 class="text-gray-700">Tổng </h5>
+
+
+                                    </div>
+                                    <div class="col-4" style="text-align: center">
+                                        <h5 class="text-gray-700"> x 2</h5>
+                                    </div>
+
+                                    <div class="col-4" style="text-align: right">
+                                        <h5 class="text-gray-700">10000đ</h5>
+
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
@@ -676,43 +729,7 @@ include 'config.php';
                                         ?>
 
 
-                                    <!-- <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 
-                                    <thead>
-                                        <tr>
-                                            <th>Mã xe</th>
-                                            <th>Tên xe</th>
-                                            <th>Tình trạng xe</th>
-                                            <th>Giá</th>
-                                            <th>Mô tả</th>
-                                            <th>Thao tác</th>
-                                        </tr>
-                                    </thead>
-                                    
-                                    
-                                    <tbody>
-                                        <tr>
-                                            <td>< echo $productId; ?></td>
-                                            <td>< echo $productName; ?></td>
-                                            <td class="card-status-ready">< echo $productStatus; ?></td>
-                                            <td>< echo $productPrice; ?></td>
-                                            <td>< echo $productDescription; ?></td>
-                                            <td class="card-table-item">
-                                                <a href="product.php?id=< echo $lastInsertId; ?>" class="card-table-link">
-                                                    <i class="fas fa-info-circle card-table-icon"></i>
-                                                </a>
-                                                <a href="" class="card-table-link">
-                                                    <i class="fas fa-edit card-table-icon"></i>
-                                                </a>
-                                                <a href="" class="card-table-link">
-                                                    <i class="fas fa-trash-alt card-table-icon"></i>
-                                                </a>
-                                                
-                                            </td>
-                                        </tr>
-                                        
-                                    </tbody>
-                                </table> -->
                             </div>
 
                         </div>
