@@ -379,9 +379,15 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <?php $result1 =$link->query("SELECT count(chitietxe.Maxe) as Number  FROM (chitietxe inner join loaixe on chitietxe.MaLoaiXe = loaixe.MaLoaiXe) WHERE TrangThai='Tới Hạn Trả'")?>
+                    <?php ($row1=$result1->fetch_assoc())?>
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Danh Sách Xe Tới Hạn Trả</h1>
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Danh Sách Xe Tới Hạn Trả /
+                        <?php echo'<span style=" color: red">'.$row1['Number'].'</span>'?> Xe
+                    </h1>
 
 
                     <!-- DataTales Example -->
@@ -463,18 +469,37 @@
                                             </div>
                                             <div class="card-body_item ">
                                                 <label for="">Tình trạng xe<sup>*</sup></label>
-                                                <select id="TrangThai" name="TrangThai">
-                                                    <option value="Sẵn Sàng">Sẵn Sàng</option>
-                                                    <option value="Đang Được Thuê">Đang Được Thuê</option>
-                                                    <option value="Tới Hạn Trả">Tới Hạn Trả</option>
+                                                <select onchange="ColorFunction(this.value)" id="TrangThai"
+                                                    name="TrangThai" style="color: green;">
+                                                    <option value="Sẵn Sàng" style="color: green">Sẵn
+                                                        Sàng
+                                                    </option>
+                                                    <option value="Đang Được Thuê" style="color: yellow">Đang
+                                                        Được
+                                                        Thuê</option>
+                                                    <option value="Tới Hạn Trả" style="color: red">Tới Hạn
+                                                        Trả
 
+                                                    </option>
                                                 </select>
 
                                             </div>
                                             <div class="card-body_item ">
-                                                <label for="">Giá Thành<sup>*</sup></label>
-                                                <input class="card-body_input" type="number" id="GiaThanh"
-                                                    name="GiaThanh" min="0" required>
+                                                <label for="">Giá Thuê Theo Giờ<sup>*</sup></label>
+                                                <input class="card-body_input" type="number" id="GiaThueTheoGio"
+                                                    name="GiaThueTheoGio" min="0" required>
+
+                                            </div>
+                                            <div class="card-body_item ">
+                                                <label for="">Giá Thuê Theo Ngày<sup>*</sup></label>
+                                                <input class="card-body_input" type="number" id="GiaThueTheoNgay"
+                                                    name="GiaThueTheoNgay" min="0" required>
+
+                                            </div>
+                                            <div class="card-body_item ">
+                                                <label for="">Giá Thuê Theo Tháng<sup>*</sup></label>
+                                                <input class="card-body_input" type="number" id="GiaThueTheoThang"
+                                                    name="GiaThueTheoThang" min="0" required>
 
                                             </div>
 
@@ -493,7 +518,7 @@
                             </form>
 
                         </div>
-                        <?php $result =$link->query("SELECT chitietxe.MaXe,chitietxe.TenXe,chitietxe.MaLoaiXe,chitietxe.BienSoXe,chitietxe.KhungXe,chitietxe.MauSac,chitietxe.NamDangKy,chitietxe.TrangThai,chitietxe.HinhAnh,chitietxe.GiaThanh,loaixe.TenLoaiXe,loaixe.SoLuong FROM (chitietxe inner join loaixe on chitietxe.MaLoaiXe = loaixe.MaLoaiXe) where TrangThai='Tới Hạn Trả'")?>
+                        <?php $result =$link->query("SELECT chitietxe.MaXe,chitietxe.TenXe,chitietxe.MaLoaiXe,chitietxe.BienSoXe,chitietxe.KhungXe,chitietxe.MauSac,chitietxe.NamDangKy,chitietxe.TrangThai,chitietxe.HinhAnh,chitietxe.GiaThueTheoGio,chitietxe.GiaThueTheoNgay,chitietxe.GiaThueTheoThang,loaixe.TenLoaiXe,loaixe.SoLuong FROM (chitietxe inner join loaixe on chitietxe.MaLoaiXe = loaixe.MaLoaiXe) where TrangThai='Tới Hạn Trả'")?>
 
                         <div class="card-body">
                             <div class="table-responsive">
@@ -504,7 +529,9 @@
                                             <th>Mã xe</th>
                                             <th>Tên xe</th>
                                             <th>Tình trạng xe</th>
-                                            <th>Giá</th>
+                                            <th>Giá Giờ</th>
+                                            <th>Giá Ngày</th>
+                                            <th>Giá Tháng</th>
                                             <th>Loại Xe</th>
                                             <th>Thao tác</th>
                                         </tr>
@@ -517,8 +544,11 @@
                                             <td><?php echo $row['MaXe'];?></td>
                                             <td><?php echo $row['TenXe'];?></td>
                                             <td><?php echo $row['TenLoaiXe'];?></td>
-                                            <td class="card-status-ready"><?php echo $row['TrangThai'];?></td>
-                                            <td><?php echo $row['GiaThanh']."đ";?></td>
+                                            <td class="card-status-ready" value="<?php echo $row['TrangThai'];?>">
+                                                <?php echo $row['TrangThai'];?></td>
+                                            <td><?php echo $row['GiaThueTheoGio']."đ";?></td>
+                                            <td><?php echo $row['GiaThueTheoNgay']."đ";?></td>
+                                            <td><?php echo $row['GiaThueTheoThang']."đ";?></td>
                                             <td class="card-table-item">
                                                 <a href="detailproductready.php?MaXe=<?php echo $row ['MaXe']; ?>"
                                                     class="card-table-link">
@@ -550,7 +580,8 @@
                                                             </div>
                                                             <div class='modal-body'>
                                                                 <div class='card-body_item'>
-                                                                    <label for=''>Chọn hình ảnh xe<sup>*</sup></label>
+                                                                    <label for=''>Chọn hình ảnh
+                                                                        xe<sup>*</sup></label>
                                                                     <input class='card-body_input' type='file'
                                                                         name='HinhAnh'
                                                                         value=' <?php echo $row ['HinhAnh']; ?>'
@@ -588,7 +619,8 @@
                                                                 </div>
 
                                                                 <div class='card-body_item '>
-                                                                    <label for=''>Năm đăng ký<sup>*</sup></label>
+                                                                    <label for=''>Năm đăng
+                                                                        ký<sup>*</sup></label>
                                                                     <input class='card-body_input' type='text'
                                                                         name='NamDangKy'
                                                                         value='<?php echo $row ['NamDangKy']; ?>'
@@ -603,7 +635,8 @@
                                                                     <select name='TenLoaiXe1' id='TenLoaiXe1'>
                                                                         <option
                                                                             value='<?php echo $row ['MaLoaiXe']; ?>'>
-                                                                            <?php echo $row ['TenLoaiXe']; ?></option>;
+                                                                            <?php echo $row ['TenLoaiXe']; ?>
+                                                                        </option>;
                                                                         <?php
                                                               $MaLoaiXe=$row ['MaLoaiXe']; 
                                                                 $sql1="SELECT MaLoaiXe,TenLoaiXe FROM `loaixe` where MaLoaiXe NOT in (SELECT MaLoaiXe from `loaixe` where MaLoaiXe=$MaLoaiXe)";
@@ -614,7 +647,8 @@
                                                            ?>
                                                                         <option
                                                                             value="<?php echo $tl1 ['MaLoaiXe']; ?>">
-                                                                            <?php echo $tl1 ['TenLoaiXe']; ?></option>
+                                                                            <?php echo $tl1 ['TenLoaiXe']; ?>
+                                                                        </option>
                                                                         <?php
                                                               }
                                                            ?>
@@ -624,32 +658,52 @@
 
 
                                                                 <div class="card-body_item ">
-                                                                    <label for="">Trạng Thái<sup>*</sup></label>
-                                                                    <select id="TrangThai" name="TrangThai">
+                                                                    <label for="">Trạng
+                                                                        Thái<sup>*</sup></label>
+                                                                    <select id="TrangThai" name="TrangThai"
+                                                                        <?php  if ($row ['TrangThai']=="Sẵn Sàng") echo 'style="color: green"';
+                                                                        else if ($row ['TrangThai']=="Đang Được Thuê") echo 'style="color: yellow"';
+                                                                        else if ($row ['TrangThai']=="Tới Hạn Trả") echo 'style="color: red"';?>>
                                                                         <?php 
                                                                  $TrangThai=$row ['TrangThai'];
                                                                 $array=['Sẵn Sàng','Đang Được Thuê','Tới Hạn Trả'];
-                                                             foreach($array as $tt){
-                                                             ?>
-                                                                        <option value="<?php echo $tt;?>"
-                                                                            <?php if($tt==$TrangThai) echo 'selected';?>>
+                                                                foreach($array as $tt){
+                                                                    ?>
+                                                                        <option value="<?php echo $tt;?>" <?php  if ($tt=="Sẵn Sàng") echo 'style="color: green"';
+                                                                               else if ($tt=="Đang Được Thuê") echo 'style="color: yellow"';
+                                                                               else if ($tt=="Tới Hạn Trả") echo 'style="color: red"';
+                                                                                if($tt==$TrangThai) {echo 'selected';
+                                                                              }
+                                                                               ?>>
                                                                             <?php echo $tt;?>
                                                                         </option>
                                                                         <?php
-                                                                }
-                                                             ?>
-
+                                                                       }
+                                                                    ?>
 
                                                                     </select>
 
                                                                 </div>
                                                                 <div class='card-body_item '>
-                                                                    <label for=''>Giá<sup>*</sup></label>
+                                                                    <label for=''>Giá Giờ<sup>*</sup></label>
                                                                     <input class='card-body_input' type='number'
-                                                                        name='GiaThanh' min='0'
-                                                                        value='<?php echo $row ['GiaThanh']; ?>'
+                                                                        name='GiaThueTheoGio' min='0'
+                                                                        value='<?php echo $row ['GiaThueTheoGio']; ?>'
                                                                         required>
-
+                                                                </div>
+                                                                <div class='card-body_item '>
+                                                                    <label for=''>Giá Ngày<sup>*</sup></label>
+                                                                    <input class='card-body_input' type='number'
+                                                                        name='GiaThueTheoNgay' min='0'
+                                                                        value='<?php echo $row ['GiaThueTheoNgay']; ?>'
+                                                                        required>
+                                                                </div>
+                                                                <div class='card-body_item '>
+                                                                    <label for=''>Giá Tháng<sup>*</sup></label>
+                                                                    <input class='card-body_input' type='number'
+                                                                        name='GiaThueTheoThang' min='0'
+                                                                        value='<?php echo $row ['GiaThueTheoThang']; ?>'
+                                                                        required>
                                                                 </div>
 
                                                                 <div class='card-body_item'>
@@ -772,6 +826,7 @@
         });
     });
     </script>
+    <script type="text/javascript" src="js/Color.js"></script>
 
 </body>
 

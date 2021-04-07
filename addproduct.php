@@ -5,7 +5,10 @@ if(isset($_POST['submit'])){
 	$BienSoXe = $_POST["BienSoXe"];
     $KhungXe = $_POST["KhungXe"];
     $MauSac = $_POST["MauSac"];
-	$GiaThanh = $_POST["GiaThanh"];
+	$GiaTheoGio = $_POST["GiaThueTheoGio"];
+	$GiaTheoNgay = $_POST["GiaThueTheoNgay"];
+	$GiaTheoThang = $_POST["GiaThueTheoThang"];
+
     $NamDangKy = $_POST["NamDangKy"];
     $TrangThai = $_POST["TrangThai"];
     $TenLoaiXe = $_REQUEST["TenLoaiXe"];
@@ -22,7 +25,7 @@ if(isset($_POST['submit'])){
   		$msg = "Failed to upload image";
   	}
 
-  	$insert_data = "INSERT INTO chitietxe (MaLoaiXe,TenXe,BienSoXe,KhungXe,MauSac,GiaThanh,NamDangKy,TrangThai) VALUES ('$TenLoaiXe','$TenXe','$BienSoXe','$KhungXe','$MauSac','$GiaThanh','$NamDangKy','$TrangThai')";
+  	$insert_data = "INSERT INTO chitietxe (MaLoaiXe,TenXe,BienSoXe,KhungXe,MauSac,GiaThueTheoGio,GiaThueTheoNgay,GiaThueTheoThang,NamDangKy,TrangThai,HinhAnh) VALUES ('$TenLoaiXe','$TenXe','$BienSoXe','$KhungXe','$MauSac','$GiaTheoGio','$GiaTheoNgay','$GiaTheoThang','$NamDangKy','$TrangThai','$target')";
   	 
     $run_data = mysqli_query($link,$insert_data);
 

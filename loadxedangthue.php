@@ -9,14 +9,17 @@ if($_POST['type']==""){
     }
 }else if($_POST['type']=="Loadxedangthue"){
     if($_POST['id']==0){
-        $result =$link->query( "SELECT chitietxe.MaXe,chitietxe.TenXe,chitietxe.MaLoaiXe,chitietxe.BienSoXe,chitietxe.KhungXe,chitietxe.MauSac,chitietxe.NamDangKy,chitietxe.TrangThai,chitietxe.HinhAnh,chitietxe.GiaThanh,loaixe.TenLoaiXe,loaixe.SoLuong FROM (chitietxe inner join loaixe on chitietxe.MaLoaiXe = loaixe.MaLoaiXe) where TrangThai='Đang Được Thuê'");
+        $result =$link->query( "SELECT chitietxe.MaXe,chitietxe.TenXe,chitietxe.MaLoaiXe,chitietxe.BienSoXe,chitietxe.KhungXe,chitietxe.MauSac,chitietxe.NamDangKy,chitietxe.TrangThai,chitietxe.HinhAnh,chitietxe.GiaThueTheoGio,chitietxe.GiaThueTheoNgay,chitietxe.GiaThueTheoThang,loaixe.TenLoaiXe,loaixe.SoLuong FROM (chitietxe inner join loaixe on chitietxe.MaLoaiXe = loaixe.MaLoaiXe) where TrangThai='Đang Được Thuê'");
     while($row=$result->fetch_assoc()){?>
 <tr>
     <td><?php echo $row['MaXe'];?></td>
     <td><?php echo $row['TenXe'];?></td>
     <td><?php echo $row['TenLoaiXe'];?></td>
-    <td class='card-status-ready'><?php echo $row['TrangThai'];?></td>
-    <td><?php echo $row['GiaThanh']."đ";?></td>
+    <td class='card-status-ready' value="<?php echo $row['TrangThai'];?>"><?php echo $row['TrangThai'];?></td>
+    <td><?php echo $row['GiaThueTheoGio']."đ";?></td>
+    <td><?php echo $row['GiaThueTheoNgay']."đ";?></td>
+    <td><?php echo $row['GiaThueTheoThang']."đ";?></td>
+
     <td class='card-table-item'>
         <a class='card-table-link' href='detailproductready.php?MaXe=<?php echo $row ['MaXe']; ?>' title='View Record'
             data-toggle='tooltip'><i class='fas fa-info-circle card-table-icon'></i></a>
@@ -94,20 +97,35 @@ if($_POST['type']==""){
                                 <?php 
                                  $TrangThai=$row ['TrangThai'];
                                 $array=['Sẵn Sàng','Đang Được Thuê','Tới Hạn Trả'];
-                             foreach($array as $tt){
-                             ?>
-                                <option value="<?php echo $tt;?>" <?php if($tt==$TrangThai) echo 'selected';?>>
+                                foreach($array as $tt){
+                                    ?>
+                                <option value="<?php echo $tt;?>" <?php  if ($tt=="Sẵn Sàng") echo 'style="color: green"';
+                                               else if ($tt=="Đang Được Thuê") echo 'style="color: yellow"';
+                                               else if ($tt=="Tới Hạn Trả") echo 'style="color: red"';
+                                                if($tt==$TrangThai) {echo 'selected';
+                                              }
+                                               ?>>
                                     <?php echo $tt;?>
                                 </option>
                                 <?php
-                                }
-                             ?>
+                                       }
+                                    ?>
                             </select>
                         </div>
                         <div class='card-body_item '>
-                            <label for=''>Giá<sup>*</sup></label>
-                            <input class='card-body_input' type='number' name='GiaThanh' min='0'
-                                value='<?php echo $row ['GiaThanh']; ?>' required>
+                            <label for=''>Giá Giờ<sup>*</sup></label>
+                            <input class='card-body_input' type='number' name='GiaThueTheoGio' min='0'
+                                value='<?php echo $row ['GiaThueTheoGio']; ?>' required>
+                        </div>
+                        <div class='card-body_item '>
+                            <label for=''>Giá Ngày<sup>*</sup></label>
+                            <input class='card-body_input' type='number' name='GiaThueTheoNgay' min='0'
+                                value='<?php echo $row ['GiaThueTheoNgay']; ?>' required>
+                        </div>
+                        <div class='card-body_item '>
+                            <label for=''>Giá Tháng<sup>*</sup></label>
+                            <input class='card-body_input' type='number' name='GiaThueTheoThang' min='0'
+                                value='<?php echo $row ['GiaThueTheoThang']; ?>' required>
                         </div>
                     </div>
                     <div class='modal-footer'>
@@ -124,15 +142,18 @@ if($_POST['type']==""){
 </tr>
 <?php } }else{
 $result =$link->query( "SELECT
-chitietxe.MaXe,chitietxe.TenXe,chitietxe.MaLoaiXe,chitietxe.BienSoXe,chitietxe.KhungXe,chitietxe.MauSac,chitietxe.NamDangKy,chitietxe.TrangThai,chitietxe.HinhAnh,chitietxe.GiaThanh,loaixe.TenLoaiXe,loaixe.SoLuong
+chitietxe.MaXe,chitietxe.TenXe,chitietxe.MaLoaiXe,chitietxe.BienSoXe,chitietxe.KhungXe,chitietxe.MauSac,chitietxe.NamDangKy,chitietxe.TrangThai,chitietxe.HinhAnh,chitietxe.GiaThueTheoGio,chitietxe.GiaThueTheoNgay,chitietxe.GiaThueTheoThang,loaixe.TenLoaiXe,loaixe.SoLuong
 FROM (chitietxe inner join loaixe on chitietxe.MaLoaiXe = loaixe.MaLoaiXe) where chitietxe.MaLoaiXe={$_POST['id']} AND chitietxe.TrangThai='Đang Được Thuê'");
     while($row=$result->fetch_assoc()){?>
 <tr>
     <td><?php echo $row['MaXe'];?></td>
     <td><?php echo $row['TenXe'];?></td>
+
     <td><?php echo $row['TenLoaiXe'];?></td>
-    <td class='card-status-ready'><?php echo $row['TrangThai'];?></td>
-    <td><?php echo $row['GiaThanh']."đ";?></td>
+    <td class='card-status-ready' value="<?php echo $row['TrangThai'];?>"><?php echo $row['TrangThai'];?></td>
+    <td><?php echo $row['GiaThueTheoGio']."đ";?></td>
+    <td><?php echo $row['GiaThueTheoNgay']."đ";?></td>
+    <td><?php echo $row['GiaThueTheoThang']."đ";?></td>
     <td class='card-table-item'>
         <a class='card-table-link' href='detailproductready.php?MaXe=<?php echo $row ['MaXe']; ?>' title='View Record'
             data-toggle='tooltip'><i class='fas fa-info-circle card-table-icon'></i></a>
@@ -206,24 +227,42 @@ FROM (chitietxe inner join loaixe on chitietxe.MaLoaiXe = loaixe.MaLoaiXe) where
                         </div>
                         <div class="card-body_item ">
                             <label for="">Tình trạng xe<sup>*</sup></label>
-                            <select id="TrangThai" name="TrangThai">
+                            <select id="TrangThai" name="TrangThai"
+                                <?php  if ($row ['TrangThai']=="Sẵn Sàng") echo 'style="color: green"';
+                                                                        else if ($row ['TrangThai']=="Đang Được Thuê") echo 'style="color: yellow"';
+                                                                        else if ($row ['TrangThai']=="Tới Hạn Trả") echo 'style="color: red"';?>>
                                 <?php 
                                  $TrangThai=$row ['TrangThai'];
                                 $array=['Sẵn Sàng','Đang Được Thuê','Tới Hạn Trả'];
-                             foreach($array as $tt){
-                             ?>
-                                <option value="<?php echo $tt;?>" <?php if($tt==$TrangThai) echo 'selected';?>>
+                                foreach($array as $tt){
+                                    ?>
+                                <option value="<?php echo $tt;?>" <?php  if ($tt=="Sẵn Sàng") echo 'style="color: green"';
+                                               else if ($tt=="Đang Được Thuê") echo 'style="color: yellow"';
+                                               else if ($tt=="Tới Hạn Trả") echo 'style="color: red"';
+                                                if($tt==$TrangThai) {echo 'selected';
+                                              }
+                                               ?>>
                                     <?php echo $tt;?>
                                 </option>
                                 <?php
-                                }
-                             ?>
+                                       }
+                                    ?>
                             </select>
                         </div>
                         <div class='card-body_item '>
-                            <label for=''>Giá<sup>*</sup></label>
-                            <input class='card-body_input' type='number' name='GiaThanh' min='0'
-                                value='<?php echo $row ['GiaThanh']; ?>' required>
+                            <label for=''>Giá Giờ<sup>*</sup></label>
+                            <input class='card-body_input' type='number' name='GiaThueTheoGio' min='0'
+                                value='<?php echo $row ['GiaThueTheoGio']; ?>' required>
+                        </div>
+                        <div class='card-body_item '>
+                            <label for=''>Giá Ngày<sup>*</sup></label>
+                            <input class='card-body_input' type='number' name='GiaThueTheoNgay' min='0'
+                                value='<?php echo $row ['GiaThueTheoNgay']; ?>' required>
+                        </div>
+                        <div class='card-body_item '>
+                            <label for=''>Giá Tháng<sup>*</sup></label>
+                            <input class='card-body_input' type='number' name='GiaThueTheoThang' min='0'
+                                value='<?php echo $row ['GiaThueTheoThang']; ?>' required>
                         </div>
                     </div>
                     <div class='modal-footer'>
@@ -240,3 +279,4 @@ FROM (chitietxe inner join loaixe on chitietxe.MaLoaiXe = loaixe.MaLoaiXe) where
 </tr>
 
 <?php }}}?>
+<script type="text/javascript" src="js/Color.js"></script>

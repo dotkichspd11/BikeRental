@@ -25,13 +25,14 @@ include 'config.php';
 
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
 <body id="page-top">
+    <?php $cart=(isset($_SESSION['cart']))? $_SESSION['cart']:[] ; $SoLuong=0; foreach ($cart as $key => $value): $SoLuong++?>
+    <?php endforeach ?>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -323,7 +324,85 @@ include 'config.php';
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                             </div>
                         </li>
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="cartProducts" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-shopping-cart"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter"><?php echo $SoLuong?></span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Thông tin giỏ hàng
+                                </h6>
+                                <?php $TongTien=0;foreach ($cart as $key => $value) : ?>
+                                <?php $TienTungXe=0;?>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
 
+                                    <div class="col-4">
+                                        <img style="height:60px; width:80px" src="<?php echo $value['HinhAnh'] ?>"
+                                            alt="">
+                                    </div>
+                                    <div class="col-4">
+                                        <div><?php echo $value['TenXe']?></div>
+                                    </div>
+                                    <div style="text-align: right" class="col-4">
+                                        <?php 
+                                        $NgayBatDau = new DateTime($value['NgayBatDau']);
+                                        $NgayKetThuc = new DateTime($value['NgayKetThuc']);
+                                        $interval = $NgayBatDau->diff($NgayKetThuc);
+                                        if($interval->m !==0){
+                                            $TienTungXe=$TienTungXe+($interval->m * $value['GiaTheoThang']+$interval->d* $value['GiaTheoNgay']+$interval->h*$value['GiaTheoGio']);
+                                            echo '
+                                            <span class="font-weight-bold small text-gray-700">
+                                              '.$interval->m.' Tháng '.$interval->d.' Ngày '.$interval->h.' Giờ <br>'. $TienTungXe.'đ</br></span>
+                                             </div>';
+                                            $TongTien=$TongTien+($interval->m * $value['GiaTheoThang']+$interval->d* $value['GiaTheoNgay']+$interval->h*$value['GiaTheoGio']);
+                                        }
+                                        elseif($interval->d !==0){
+                                            $TienTungXe=$TienTungXe+($interval->d * $value['GiaTheoNgay']+$interval->h*$value['GiaTheoGio']);
+                                            echo '
+                                            <span class="font-weight-bold small text-gray-700">
+                                              '.$interval->d.'Ngày  '.$interval->h.' Giờ <br>'. $TienTungXe.'đ</br></span>
+                                            </div>';
+                                            $TongTien=$TongTien+($interval->d * $value['GiaTheoNgay']+$interval->h*$value['GiaTheoGio']);
+                                            
+                                        }else if ($interval->h !==0){
+                                            $TienTungXe=$TienTungXe+($interval->d * $value['GiaTheoNgay']+$interval->h*$value['GiaTheoGio']);
+                                           echo'
+                                            <span class="font-weight-bold small text-gray-700">
+                                              '.$interval->h.' Giờ <br>'. $TienTungXe.'đ</br></span>
+                                             </div>';
+                                             $TongTien=$TongTien+($interval->d * $value['GiaTheoNgay']+$interval->h*$value['GiaTheoGio']);
+                                            }?>
+                                        <td>
+                                            <a href="Cart.php?MaXe=<?php echo $value['MaXe'] ?>&action=delete" title=""
+                                                class="btn btn-danger">Xóa</a>
+                                        </td>
+                                </a>
+
+                                <?php endforeach  ?>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+
+
+                                    <div class="col-4">
+                                        <h5 class="text-gray-700">Tổng </h5>
+
+
+                                    </div>
+                                    <div class="col-4" style="text-align: center">
+                                        <h5 class="text-gray-700"> x<?php echo $SoLuong ?> </h5>
+                                    </div>
+
+                                    <div class="col-4" style="text-align: right">
+                                        <h5 class="text-gray-700"><?php echo $TongTien ?>đ</h5>
+
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
@@ -365,10 +444,13 @@ include 'config.php';
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+                    <?php $result1 =$link->query("SELECT count(chitietxe.Maxe) as Number  FROM (chitietxe inner join loaixe on chitietxe.MaLoaiXe = loaixe.MaLoaiXe) ")?>
+                    <?php ($row1=$result1->fetch_assoc())?>
+
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Danh Sách Xe Tại Cửa Hàng</h1>
-
-
+                    <h1 class="h3 mb-2 text-gray-800">Danh Sách Tất Cả Xe /
+                        <?php echo'<span style=" color: blue">'.$row1['Number'].'</span>'?> Xe
+                    </h1>
                     <!-- DataTales Example -->
 
                     <div class="card shadow mb-4">
@@ -427,7 +509,7 @@ include 'config.php';
                                             </div>
                                             <div class="card-body_item ">
                                                 <label for="">Năm đăng ký<sup>*</sup></label>
-                                                <input class="card-body_input" type="text" id="NamDangKy"
+                                                <input class="card-body_input" type="date" id="NamDangKy"
                                                     name="NamDangKy" required>
 
                                             </div>
@@ -451,24 +533,39 @@ include 'config.php';
                                             </div>
                                             <div class="card-body_item ">
                                                 <label for="">Tình trạng xe<sup>*</sup></label>
-                                                <select id="TrangThai" name="TrangThai">
-                                                    <option value="Sẵn Sàng">Sẵn Sàng</option>
-                                                    <option value="Đang Được Thuê">Đang Được Thuê</option>
-                                                    <option value="Tới Hạn Trả">Tới Hạn Trả</option>
+                                                <select onchange="ColorFunction(this.value)" id="TrangThai"
+                                                    name="TrangThai" style="color: green;">
+                                                    <option value="Sẵn Sàng" style="color: green">Sẵn
+                                                        Sàng
+                                                    </option>
+                                                    <option value="Đang Được Thuê" style="color: yellow">Đang Được
+                                                        Thuê</option>
+                                                    <option value="Tới Hạn Trả" style="color: red">Tới Hạn Trả
 
+                                                    </option>
                                                 </select>
 
                                             </div>
                                             <div class="card-body_item ">
-                                                <label for="">Giá Thành<sup>*</sup></label>
-                                                <input class="card-body_input" type="number" id="GiaThanh"
-                                                    name="GiaThanh" min="0" required>
+                                                <label for="">Giá Thuê Theo Giờ<sup>*</sup></label>
+                                                <input class="card-body_input" type="number" id="GiaThueTheoGio"
+                                                    name="GiaThueTheoGio" min="0" required>
+
+                                            </div>
+                                            <div class="card-body_item ">
+                                                <label for="">Giá Thuê Theo Ngày<sup>*</sup></label>
+                                                <input class="card-body_input" type="number" id="GiaThueTheoNgay"
+                                                    name="GiaThueTheoNgay" min="0" required>
+
+                                            </div>
+                                            <div class="card-body_item ">
+                                                <label for="">Giá Thuê Theo Tháng<sup>*</sup></label>
+                                                <input class="card-body_input" type="number" id="GiaThueTheoThang"
+                                                    name="GiaThueTheoThang" min="0" required>
 
                                             </div>
 
-                                            <div class="card-body_item">
 
-                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
@@ -492,7 +589,7 @@ include 'config.php';
                                 // Attempt select query execution
                                 
                                     
-                                $sql = "SELECT chitietxe.MaXe,chitietxe.TenXe,chitietxe.MaLoaiXe,chitietxe.BienSoXe,chitietxe.KhungXe,chitietxe.MauSac,chitietxe.NamDangKy,chitietxe.TrangThai,chitietxe.HinhAnh,chitietxe.GiaThanh,loaixe.TenLoaiXe,loaixe.SoLuong FROM (chitietxe inner join loaixe on chitietxe.MaLoaiXe = loaixe.MaLoaiXe)";
+                                $sql = "SELECT chitietxe.MaXe,chitietxe.TenXe,chitietxe.MaLoaiXe,chitietxe.BienSoXe,chitietxe.KhungXe,chitietxe.MauSac,chitietxe.NamDangKy,chitietxe.TrangThai,chitietxe.HinhAnh,chitietxe.GiaThueTheoGio,chitietxe.GiaThueTheoNgay,chitietxe.GiaThueTheoThang,loaixe.TenLoaiXe,loaixe.SoLuong FROM (chitietxe inner join loaixe on chitietxe.MaLoaiXe = loaixe.MaLoaiXe)";
                                 
                                 if($result = mysqli_query($link, $sql)  ){
                                     if(mysqli_num_rows($result)  > 0){
@@ -503,19 +600,28 @@ include 'config.php';
                                                     echo "<th>Tên xe</th>";
                                                     echo "<th>Loại Xe</th>";
                                                     echo "<th>Tình trạng xe</th>";
-                                                    echo "<th>Giá</th>";
+                                                    echo "<th>Giá Giờ</th>";
+                                                    echo "<th>Giá Ngày</th>";
+                                                    echo "<th>Giá Tháng</th>";
                                                     echo "<th>Thao tác</th>";
+                                                    
                                                 echo "</tr>";
                                                 echo "</thead>";
                                                 ?>
-                                <tbody id="chitietxe">
+                                <tbody id="chitietxe" name="chitietxe">
                                     <?php while($row = mysqli_fetch_array($result) ){ ?>
                                     <tr>
                                         <td><?php echo $row['MaXe'];?></td>
                                         <td><?php echo $row['TenXe'];?></td>
+
                                         <td><?php echo $row['TenLoaiXe'];?></td>
-                                        <td class='card-status-ready'><?php echo $row['TrangThai'];?></td>
-                                        <td><?php echo $row['GiaThanh']."đ";?></td>
+                                        <td class='card-status-ready' id="ShowTrangThai" name="ShowTrangThai" value="<?php  echo $row['TrangThai'];?>
+">
+                                            <?php echo $row['TrangThai'];?>
+                                        </td>
+                                        <td><?php echo $row['GiaThueTheoGio']."đ";?></td>
+                                        <td><?php echo $row['GiaThueTheoNgay']."đ";?></td>
+                                        <td><?php echo $row['GiaThueTheoThang']."đ";?></td>
                                         <td class='card-table-item'>
                                             <a class='card-table-link'
                                                 href='detailproductready.php?MaXe=<?php echo $row ['MaXe']; ?>'
@@ -604,14 +710,21 @@ include 'config.php';
                                                             </div>
                                                             <div class="card-body_item ">
                                                                 <label for="">Tình trạng xe<sup>*</sup></label>
-                                                                <select id="TrangThai" name="TrangThai">
-                                                                    <?php 
+                                                                <select id="TrangThai" name="TrangThai"
+                                                                    <?php  if ($row ['TrangThai']=="Sẵn Sàng") echo 'style="color: green"';
+                                                                        else if ($row ['TrangThai']=="Đang Được Thuê") echo 'style="color: yellow"';
+                                                                        else if ($row ['TrangThai']=="Tới Hạn Trả") echo 'style="color: red"';?>>
+                                                                    <?php   
                                                                  $TrangThai=$row ['TrangThai'];
                                                                 $array=['Sẵn Sàng','Đang Được Thuê','Tới Hạn Trả'];
                                                              foreach($array as $tt){
                                                              ?>
-                                                                    <option value="<?php echo $tt;?>"
-                                                                        <?php if($tt==$TrangThai) echo 'selected';?>>
+                                                                    <option value="<?php echo $tt;?>" <?php  if ($tt=="Sẵn Sàng") echo 'style="color: green"';
+                                                                        else if ($tt=="Đang Được Thuê") echo 'style="color: yellow"';
+                                                                        else if ($tt=="Tới Hạn Trả") echo 'style="color: red"';
+                                                                         if($tt==$TrangThai) {echo 'selected';
+                                                                       }
+                                                                        ?>>
                                                                         <?php echo $tt;?>
                                                                     </option>
                                                                     <?php
@@ -620,10 +733,25 @@ include 'config.php';
                                                                 </select>
                                                             </div>
                                                             <div class='card-body_item '>
-                                                                <label for=''>Giá<sup>*</sup></label>
+                                                                <label for=''>Giá Giờ<sup>*</sup></label>
                                                                 <input class='card-body_input' type='number'
-                                                                    name='GiaThanh' min='0'
-                                                                    value='<?php echo $row ['GiaThanh']; ?>' required>
+                                                                    name='GiaThueTheoGio' min='0'
+                                                                    value='<?php echo $row ['GiaThueTheoGio']; ?>'
+                                                                    required>
+                                                            </div>
+                                                            <div class='card-body_item '>
+                                                                <label for=''>Giá Ngày<sup>*</sup></label>
+                                                                <input class='card-body_input' type='number'
+                                                                    name='GiaThueTheoNgay' min='0'
+                                                                    value='<?php echo $row ['GiaThueTheoNgay']; ?>'
+                                                                    required>
+                                                            </div>
+                                                            <div class='card-body_item '>
+                                                                <label for=''>Giá Tháng<sup>*</sup></label>
+                                                                <input class='card-body_input' type='number'
+                                                                    name='GiaThueTheoThang' min='0'
+                                                                    value='<?php echo $row ['GiaThueTheoThang']; ?>'
+                                                                    required>
                                                             </div>
                                                         </div>
                                                         <div class='modal-footer'>
@@ -640,6 +768,41 @@ include 'config.php';
                                                 href='deleteproduct.php?MaXe=<?php echo $row ['MaXe']; ?>'
                                                 title='Delete Record' data-toggle='tooltip'><i
                                                     class='fas fa-trash-alt card-table-icon'></i></a>
+                                            <?php if($row['TrangThai']=="Sẵn Sàng") {?>
+                                            <button type="button
+                                                " class="btn btn-primary" data-toggle="modal"
+                                                data-target="#exampleModalLong1<?php echo $row ['MaXe']; ?>">Thuê
+                                                xe</button>
+                                            <form action="Cart.php?MaXe=<?php echo $row ['MaXe']; ?>" method="POST"
+                                                id="exampleModalLong1<?php echo $row ['MaXe']; ?>"
+                                                enctype="multipart/form-data" class="modal fade" tabindex="-1"
+                                                role="dialog" aria-labelledby="exampleModalLongTitle"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body">
+                                                            <div class="card-body_item">
+                                                                <label for="">Ngày thuê xe<sup>*</sup></label>
+                                                                <input class="card-body_input" type="datetime-local"
+                                                                    id="datestart" name="datestart" required>
+                                                            </div>
+                                                            <div class="card-body_item">
+                                                                <label for="">Ngày trả xe<sup>*</sup></label>
+                                                                <input class="card-body_input" type="datetime-local"
+                                                                    id="datefinish" name="datefinish" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Đóng</button>
+                                                            <button type="submit" class="btn btn-primary">Xác
+                                                                nhận</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                            <?php }?>
                                         </td>
                                     </tr>
                                     <?php   
@@ -802,6 +965,8 @@ include 'config.php';
         });
     });
     </script>
+    <script type="text/javascript" src="js/Color.js"></script>
+
 </body>
 
 </html>
